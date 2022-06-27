@@ -6,50 +6,150 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:27:34 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/06/25 22:15:52 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/06/27 20:26:41 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a(t_stack *a)
+void	swap_a(t_stack **a)
 {
-	int	tmp;
+	t_stack	*tmp;
 
-	tmp = a->num;
-	a->num = a->next->num;
-	a->next->num = tmp;
+	if (!*a && !(*a)->next)
+		return ;
+	tmp = (*a)->next;
+	(*a)->next = tmp->next;
+	tmp->next = *a;
+	*a = tmp;
 }
 
-void	swap_b(t_stack *b)
+void	swap_b(t_stack **b)
 {
-	int	tmp;
+	t_stack	*tmp;
 
-	tmp = b->num;
-	b->num = b->next->num;
-	b->next->num = tmp;
+	if (!*b && !(*b)->next)
+		return ;
+	tmp = (*b)->next;
+	(*b)->next = tmp->next;
+	tmp->next = *b;
+	*b = tmp;
 }
 
-void	push_b(t_stack *a, t_stack *b)
+void	push_b(t_stack **a, t_stack **b)
 {
-	ft_lstadd_front(&b, ft_lstnew(a->num));
+	t_stack	*tmp;
+
+	if (!*b)
+		return ;
+	tmp = (*a)->next;
+	ft_lstadd_front(b, *a);
+	*a = tmp;
+}
+
+void	push_a(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+	
+	if (!*a)
+		return ;
+	tmp = (*b)->next;
+	ft_lstadd_front(a, *b);
+	*b = tmp;
+}
+
+void	rotate_a(t_stack **a)
+{
+	t_stack	*tmp;
+	
+	if (!*a && !(*a)->next)
+		return ;
+	tmp = *a;
+	*a = (*a)->next;
+	ft_lstadd_back(a, tmp);
+	tmp->next = NULL;
+}
+
+void	rotate_b(t_stack **b)
+{
+	t_stack	*tmp;
+	
+	if (!*b && !(*b)->next)
+		return ;
+	tmp = *b;
+	*b = (*b)->next;
+	ft_lstadd_back(b, tmp);
+	tmp->next = NULL;
+}
+
+void	rrotate_a(t_stack **a)
+{
+	t_stack	*tmp;
+	
+	if (!*a && !(*a)->next)
+		return ;
+	tmp = *a;
+	while (tmp->next)
+	{
+		if (tmp->next->next)
+			tmp = tmp->next;
+		else
+			break ;
+	}
+	ft_lstadd_front(a, tmp->next);
+	tmp->next = NULL;
+}
+
+void	rrotate_b(t_stack **b)
+{
+	t_stack	*tmp;
+
+	if (!*b && !(*b)->next)
+		return ;
+	tmp = *b;
+	while (tmp->next)
+	{
+		if (tmp->next->next)
+			tmp = tmp->next;
+		else
+			break ;
+	}
+	ft_lstadd_front(b, tmp->next);
+	tmp->next = NULL;
 }
 
 int main(int argc, char **argv)
 {
 	t_stack *a;
-	t_stack *b;
+	// t_stack *b;
 	
 	a = ft_get_args(argc, argv);
-	b = ft_lstnew(10);
-	ft_lstadd_back(&b, ft_lstnew(6));
-	push_b(a, b);
-	while (a || b)
+	// b = NULL;
+	// swap_a(&a);
+	// b = ft_lstnew(10);
+	// ft_lstadd_back(&b, ft_lstnew(6));
+	// push_b(&a, &b);
+	// push_b(&a, &b);
+	// rotate_a(&a);
+	rrotate_a(&a);
+	// while (a || b)
+	// {
+	// 	if (a)
+	// 	{
+	// 		printf("a = %d	", a->num);
+	// 		a = a->next;
+	// 	}
+	// 	if (b)
+	// 	{
+	// 		printf("b = %d", b->num);
+	// 		b = b->next;
+	// 	}
+	// 	printf("\n");
+	// }
+	while (a)
 	{
-		printf("%d	%d\n", a->num, b->num);
+		printf("a = %d\n", a->num);
 		a = a->next;
-		b = b->next;
 	}
-	
 	return (0);
 }
