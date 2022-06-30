@@ -6,16 +6,22 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 12:24:31 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/06/25 21:46:21 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/06/30 18:44:55 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(char *str)
+void	arg_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
+long	ft_atoi(char *str)
 {
 	int	i;
-	int	res;
+	long	res;
 	int	sign;
 	
 	i = 0;
@@ -34,6 +40,8 @@ int	ft_atoi(char *str)
 		res = res * 10 + (str[i] - 48);
 		i++;
 	}
+	if (res *sign < -2147483648 || res * sign > 2147483647)
+		arg_error();
 	return (res * sign);
 }
 
@@ -100,12 +108,14 @@ char	**ft_split(char *str, char c)
 	return (split);
 }
 
-// int main(int argc, char **argv)
-// {
-// 	if (argc < 2)
-// 		return (0);
-// 	t_stack *a = ft_lstnew(ft_atoi(argv[1]));
-// 	printf("%d\n", a->num);
-	
-// 	return (0);
-// }
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}

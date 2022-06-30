@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:27:34 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/06/27 20:26:41 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/06/30 13:10:12 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,38 +118,38 @@ void	rrotate_b(t_stack **b)
 	tmp->next = NULL;
 }
 
-int main(int argc, char **argv)
-{
-	t_stack *a;
-	// t_stack *b;
+// int main(int argc, char **argv)
+// {
+// 	t_stack *a;
+// 	// t_stack *b;
 	
-	a = ft_get_args(argc, argv);
-	// b = NULL;
-	// swap_a(&a);
-	// b = ft_lstnew(10);
-	// ft_lstadd_back(&b, ft_lstnew(6));
-	// push_b(&a, &b);
-	// push_b(&a, &b);
-	// rotate_a(&a);
-	rrotate_a(&a);
-	// while (a || b)
-	// {
-	// 	if (a)
-	// 	{
-	// 		printf("a = %d	", a->num);
-	// 		a = a->next;
-	// 	}
-	// 	if (b)
-	// 	{
-	// 		printf("b = %d", b->num);
-	// 		b = b->next;
-	// 	}
-	// 	printf("\n");
-	// }
-	while (a)
-	{
-		printf("a = %d\n", a->num);
-		a = a->next;
-	}
-	return (0);
-}
+// 	a = ft_get_args(argc, argv);
+// 	// b = NULL;
+// 	// swap_a(&a);
+// 	// b = ft_lstnew(10);
+// 	// ft_lstadd_back(&b, ft_lstnew(6));
+// 	// push_b(&a, &b);
+// 	// push_b(&a, &b);
+// 	// rotate_a(&a);
+// 	rrotate_a(&a);
+// 	// while (a || b)
+// 	// {
+// 	// 	if (a)
+// 	// 	{
+// 	// 		printf("a = %d	", a->num);
+// 	// 		a = a->next;
+// 	// 	}
+// 	// 	if (b)
+// 	// 	{
+// 	// 		printf("b = %d", b->num);
+// 	// 		b = b->next;
+// 	// 	}
+// 	// 	printf("\n");
+// 	// }
+// 	while (a)
+// 	{
+// 		printf("a = %d\n", a->num);
+// 		a = a->next;
+// 	}
+// 	return (0);
+// }

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/06/25 21:59:01 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/06/30 18:51:57 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,30 @@ typedef struct	s_stack
 
 // UTILS
 
-int		ft_atoi(char *str);
+long	ft_atoi(char *str);
 char	**ft_split(char *str, char c);
 t_stack	*ft_lstnew(int nb);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
+void	ft_putstr(char *str);
+int		ft_strcmp(char *s1, char *s2);
+void	arg_error(void);
 
-// PARSING
+//	PARSING
 
+int		ft_treat_args(char **args, int i);
+int		ft_check_doubles(char **args, int i)
 t_stack	*ft_get_args(int argc, char **argv);
+
+//	MOUV's
+
+void	swap_a(t_stack **a);
+void	swap_b(t_stack **b);
+void	push_b(t_stack **a, t_stack **b);
+void	push_a(t_stack **a, t_stack **b);
+void	rotate_a(t_stack **a);
+void	rotate_b(t_stack **b);
+void	rrotate_a(t_stack **a);
+void	rrotate_b(t_stack **b);
 
 #endif
