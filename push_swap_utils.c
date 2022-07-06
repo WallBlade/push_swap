@@ -6,24 +6,18 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 12:24:31 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/06/30 18:44:55 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/04 15:00:21 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	arg_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
-
 long	ft_atoi(char *str)
 {
-	int	i;
+	int		i;
 	long	res;
-	int	sign;
-	
+	int		sign;
+
 	i = 0;
 	sign = 1;
 	res = 0;
@@ -40,16 +34,16 @@ long	ft_atoi(char *str)
 		res = res * 10 + (str[i] - 48);
 		i++;
 	}
-	if (res *sign < -2147483648 || res * sign > 2147483647)
-		arg_error();
+	if (res * sign < -2147483648 || res * sign > 2147483647)
+		ft_print_error();
 	return (res * sign);
 }
 
-int		ft_countwords(char *str, char c)
+int	ft_countwords(char *str, char c)
 {
 	int		i;
 	int		count;
-	
+
 	i = 0;
 	count = 0;
 	while (str[i])
@@ -66,7 +60,7 @@ int		ft_countwords(char *str, char c)
 	return (count);
 }
 
-int		ft_wordlen(char *str, char c, int i)
+int	ft_wordlen(char *str, char c, int i)
 {
 	int	len;
 
@@ -85,7 +79,7 @@ char	**ft_split(char *str, char c)
 	int		j;
 	int		k;
 	char	**split;
-	
+
 	i = 0;
 	split = (char **)malloc(sizeof(char *) * (ft_countwords(str, c) + 1));
 	if (!split)

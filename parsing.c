@@ -6,13 +6,13 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 16:44:09 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/06/30 18:52:13 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/05 18:42:17 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_check_doubles(char **args, int i)
+int	ft_check_doubles(char **args, int i)
 {
 	int	j;
 
@@ -30,10 +30,10 @@ int		ft_check_doubles(char **args, int i)
 	return (1);
 }
 
-int		ft_treat_args(char **args, int i)
+int	ft_treat_args(char **args, int i)
 {
 	int	j;
-	
+
 	if (!ft_check_doubles(args, i))
 		return (0);
 	while (args[i])
@@ -52,9 +52,9 @@ int		ft_treat_args(char **args, int i)
 
 t_stack	*ft_get_args(int argc, char **argv)
 {
-	int	i;
-	t_stack	*a;		
-	
+	int		i;
+	t_stack	*a;
+
 	i = 1;
 	a = NULL;
 	if (argc == 2)
@@ -68,21 +68,21 @@ t_stack	*ft_get_args(int argc, char **argv)
 			ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i++])));
 	}
 	else
-		return (ft_putstr("error\n"), NULL);
+		ft_print_error();
 	return (a);
 }
 
 // int main(int argc, char **argv)
 // {
 // 	t_stack	*a = ft_get_args(argc, argv);
-	
+
 // 	while (a)
 // 	{
 // 		printf("%d\n", a->num);
 // 		a = a->next;
 // 	}
 	// int i = 1;
-	
+
 	// if (argc == 2)
 	// {
 	// 	argv = ft_split(argv[1], ' ');

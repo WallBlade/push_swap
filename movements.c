@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:27:34 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/06/30 13:10:12 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/03 16:06:31 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ void	swap_b(t_stack **b)
 	*b = tmp;
 }
 
+void	push_a(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+
+	if (!*a)
+		return ;
+	tmp = (*b)->next;
+	ft_lstadd_front(a, *b);
+	*b = tmp;
+}
+
 void	push_b(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
@@ -47,82 +58,11 @@ void	push_b(t_stack **a, t_stack **b)
 	*a = tmp;
 }
 
-void	push_a(t_stack **a, t_stack **b)
-{
-	t_stack	*tmp;
-	
-	if (!*a)
-		return ;
-	tmp = (*b)->next;
-	ft_lstadd_front(a, *b);
-	*b = tmp;
-}
-
-void	rotate_a(t_stack **a)
-{
-	t_stack	*tmp;
-	
-	if (!*a && !(*a)->next)
-		return ;
-	tmp = *a;
-	*a = (*a)->next;
-	ft_lstadd_back(a, tmp);
-	tmp->next = NULL;
-}
-
-void	rotate_b(t_stack **b)
-{
-	t_stack	*tmp;
-	
-	if (!*b && !(*b)->next)
-		return ;
-	tmp = *b;
-	*b = (*b)->next;
-	ft_lstadd_back(b, tmp);
-	tmp->next = NULL;
-}
-
-void	rrotate_a(t_stack **a)
-{
-	t_stack	*tmp;
-	
-	if (!*a && !(*a)->next)
-		return ;
-	tmp = *a;
-	while (tmp->next)
-	{
-		if (tmp->next->next)
-			tmp = tmp->next;
-		else
-			break ;
-	}
-	ft_lstadd_front(a, tmp->next);
-	tmp->next = NULL;
-}
-
-void	rrotate_b(t_stack **b)
-{
-	t_stack	*tmp;
-
-	if (!*b && !(*b)->next)
-		return ;
-	tmp = *b;
-	while (tmp->next)
-	{
-		if (tmp->next->next)
-			tmp = tmp->next;
-		else
-			break ;
-	}
-	ft_lstadd_front(b, tmp->next);
-	tmp->next = NULL;
-}
-
 // int main(int argc, char **argv)
 // {
 // 	t_stack *a;
 // 	// t_stack *b;
-	
+
 // 	a = ft_get_args(argc, argv);
 // 	// b = NULL;
 // 	// swap_a(&a);
