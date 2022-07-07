@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:27:34 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/03 16:06:31 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:02:04 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	push_a(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 
-	if (!*a)
+	if (*b == NULL)
 		return ;
 	tmp = (*b)->next;
 	ft_lstadd_front(a, *b);
@@ -51,7 +51,7 @@ void	push_b(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
 
-	if (!*b)
+	if (*a == NULL)
 		return ;
 	tmp = (*a)->next;
 	ft_lstadd_front(b, *a);
@@ -61,35 +61,35 @@ void	push_b(t_stack **a, t_stack **b)
 // int main(int argc, char **argv)
 // {
 // 	t_stack *a;
-// 	// t_stack *b;
+// 	t_stack *b;
 
 // 	a = ft_get_args(argc, argv);
 // 	// b = NULL;
 // 	// swap_a(&a);
-// 	// b = ft_lstnew(10);
+// 	b = ft_lstnew(10);
 // 	// ft_lstadd_back(&b, ft_lstnew(6));
-// 	// push_b(&a, &b);
-// 	// push_b(&a, &b);
+// 	push_b(&a, &b);
+// 	push_b(&a, &b);
 // 	// rotate_a(&a);
-// 	rrotate_a(&a);
-// 	// while (a || b)
-// 	// {
-// 	// 	if (a)
-// 	// 	{
-// 	// 		printf("a = %d	", a->num);
-// 	// 		a = a->next;
-// 	// 	}
-// 	// 	if (b)
-// 	// 	{
-// 	// 		printf("b = %d", b->num);
-// 	// 		b = b->next;
-// 	// 	}
-// 	// 	printf("\n");
-// 	// }
-// 	while (a)
+// 	// rrotate_a(&a);
+// 	while (a || b)
 // 	{
-// 		printf("a = %d\n", a->num);
-// 		a = a->next;
+// 		if (a)
+// 		{
+// 			printf("a = %d	", a->num);
+// 			a = a->next;
+// 		}
+// 		if (b)
+// 		{
+// 			printf("b = %d", b->num);
+// 			b = b->next;
+// 		}
+// 		printf("\n");
 // 	}
+// 	// while (a)
+// 	// {
+// 	// 	printf("a = %d\n", a->num);
+// 	// 	a = a->next;
+// 	// }
 // 	return (0);
 // }

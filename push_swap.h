@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/06 17:28:55 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/07 12:51:01 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_stack	*ft_lstnew(int nb);
 t_stack	*ft_lstlast(t_stack *a);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
+t_stack	*stack_min(t_stack **a);
+t_stack	*stack_max(t_stack **a);
 int		ft_lstsize(t_stack *lst);
 void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);

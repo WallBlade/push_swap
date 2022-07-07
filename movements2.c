@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:05:56 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/03 16:06:46 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:23:22 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rotate_a(t_stack **a)
 {
 	t_stack	*tmp;
 
-	if (!*a && !(*a)->next)
+	if (!*a || ft_lstsize(*a) < 2)
 		return ;
 	tmp = *a;
 	*a = (*a)->next;
@@ -40,7 +40,7 @@ void	rrotate_a(t_stack **a)
 {
 	t_stack	*tmp;
 
-	if (!*a && !(*a)->next)
+	if (!*a || ft_lstsize(*a) < 2)
 		return ;
 	tmp = *a;
 	while (tmp->next)

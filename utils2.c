@@ -6,11 +6,43 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:23:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/03 16:04:20 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/07 15:08:41 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_stack	*stack_max(t_stack **a)
+{
+	t_stack	*max;
+	t_stack	*tmp;
+	
+	tmp = *a;
+	max = *a;
+	while (tmp)
+	{
+		if (tmp->num > max->num)
+			max = tmp;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+t_stack	*stack_min(t_stack **a)
+{
+	t_stack	*min;
+	t_stack	*tmp;
+	
+	tmp = *a;
+	min = *a;
+	while (tmp)
+	{
+		if (tmp->num < min->num)
+			min = tmp;
+		tmp = tmp->next;
+	}
+	return (min);
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {
