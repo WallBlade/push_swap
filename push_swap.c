@@ -6,61 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:26:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/07 17:40:17 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:05:44 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	index_stack(t_stack **a)
-{
-	int		i;
-	t_stack	*tmp;
-	t_stack	*tmp2;
-
-	tmp = *a;
-	while (tmp)
-	{
-		i = 1;
-		tmp2 = *a;
-		while (tmp2)
-		{
-			if (tmp->num > tmp2->num)
-				i++;
-			tmp2 = tmp2->next;
-		}
-		tmp->index = i;
-		tmp = tmp->next;
-	}
-}
-
-void	get_pos(t_stack **a)
-{
-	int		pos;
-	t_stack	*tmp;
-
-	pos = 1;
-	tmp = *a;
-	while (tmp)
-	{
-		tmp->pos = pos++;
-		tmp = tmp->next;
-	}
-}
-
-int		is_sorted(t_stack **a)
-{
-	t_stack	*tmp;
-	
-	tmp = *a;
-	while (tmp)
-	{
-		if (tmp->pos != tmp->index)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
 
 void	sort_three(t_stack **a)
 {
@@ -99,6 +49,33 @@ void	sort_five(t_stack **a, t_stack **b)
 	sort_three(a);
 	push_a(a, b);
 	push_a(a, b);
+	get_pos(a);
+}
+
+t_stack	*find_lis(t_stack **a)
+{
+	t_stack	*tmp;
+	t_stack	*tmp2;
+	int		lis;
+
+	tmp = *a;
+	while (tmp)
+	{
+		lis = 0;
+		tmp2 = tmp->next;
+		while (tmp2 != tmp)
+		{
+			if (tmp->num < tmp2->num)
+				lis++;
+			tmp2 = tmp2->next;
+			if (tmp2 == NULL)
+				tmp2 = *a;
+		}
+		if (lis > tmp->lis)
+			tmp->lis = lis;
+		tmp = tmp->next;
+	}
+	return (tmp);
 }
 
 int	main(int argc, char **argv)

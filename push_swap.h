@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/07 12:51:01 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/08 14:51:39 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_stack
 	int				num;
 	int				index;
 	int				pos;
+	int				lis;
 	struct s_stack	*next;
 }				t_stack;
 
@@ -47,6 +48,7 @@ void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_print_error(void);
 void	index_stack(t_stack **a);
+int		is_sorted(t_stack **a);
 void	get_pos(t_stack **a);
 
 
