@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:23:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/08 14:31:54 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/09 18:02:41 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,73 @@ t_stack	*stack_min(t_stack **a)
 		tmp = tmp->next;
 	}
 	return (min);
+}
+
+void	find_lis(t_stack **a)
+{
+	t_stack	*tmp;
+	t_stack	*tmp2;
+	int		save;
+	int		i;
+
+	tmp = *a;
+	while (tmp)
+	{
+		i = -1;
+		save = tmp->num;
+		tmp2 = tmp;
+		while (i++ < ft_lstsize(*a))
+		{
+			if (save < tmp2->num)
+			{
+				tmp->lis++;
+				save = tmp2->num;
+			}
+			tmp2 = tmp2->next;
+			if (tmp2 == NULL)
+				tmp2 = *a;
+		}
+		tmp = tmp->next;
+	}
+}
+
+
+t_stack	*lis_max(t_stack **a)
+{
+	t_stack *tmp;
+	t_stack *max;
+
+	tmp = *a;
+	max = *a;
+	while (tmp)
+	{
+		if (tmp->lis > max->lis)
+			max = tmp;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+void	mark_lis(t_stack **a)
+{
+	t_stack	*tmp;
+	int		comp;
+	int		i;
+
+	i = 0;
+	tmp = lis_max(a);
+	comp = tmp->num;
+	while (i++ < ft_lstsize(*a))
+	{
+		if (comp < tmp->num)
+		{
+			tmp->is_lis = 1;
+			comp = tmp->num;
+		}
+		tmp = tmp->next;
+		if (tmp == NULL)
+			tmp = *a;
+	}
 }
 
 void	index_stack(t_stack **a)

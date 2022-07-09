@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:26:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/08 15:05:44 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/09 17:59:01 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sort_three(t_stack **a)
 {
 	t_stack	*max;
-	
+
 	max = stack_max(a);
 	if (max->pos == 1)
 		rotate_a(a);
@@ -52,48 +52,28 @@ void	sort_five(t_stack **a, t_stack **b)
 	get_pos(a);
 }
 
-t_stack	*find_lis(t_stack **a)
-{
-	t_stack	*tmp;
-	t_stack	*tmp2;
-	int		lis;
-
-	tmp = *a;
-	while (tmp)
-	{
-		lis = 0;
-		tmp2 = tmp->next;
-		while (tmp2 != tmp)
-		{
-			if (tmp->num < tmp2->num)
-				lis++;
-			tmp2 = tmp2->next;
-			if (tmp2 == NULL)
-				tmp2 = *a;
-		}
-		if (lis > tmp->lis)
-			tmp->lis = lis;
-		tmp = tmp->next;
-	}
-	return (tmp);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*a = ft_get_args(argc, argv);
-	t_stack *b;
+	// t_stack	*tmp;
+	// t_stack *b;
 
-	b = NULL;
+	// b = NULL;
 	// a = stack_min(&a);
 	// printf("%d\n", a->num);
 	// sort_three(&a);
-	sort_five(&a, &b);
+	// sort_five(&a, &b);
 	index_stack(&a);
 	// push_b(&a, &b);
 	// printf("%d\t", a->num);
 	// printf("%d\n", b->num);
+	get_pos(&a);
+	find_lis(&a);
+	mark_lis(&a);
 	ft_print_stack(&a);
+	// tmp = lis_max(&a);
+	// printf("\n\t\tbiggest lis = %d\n", tmp->num);
+	// printf("%d\n", a->lis);
 
-	
 	return (0);
 }
