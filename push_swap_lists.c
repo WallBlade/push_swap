@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 21:45:47 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/06 17:28:38 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/11 15:08:35 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ t_stack	*ft_lstnew(int nb)
 {
 	t_stack	*a;
 
-	a = malloc(sizeof(t_stack *) * 1);
+	a = malloc(sizeof(*a) * 1);
 	if (!a)
 		return (NULL);
 	a->num = nb;
+	a->is_lis = 0;
 	a->next = NULL;
 	return (a);
 }

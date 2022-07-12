@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/09 17:58:56 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/12 16:04:56 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		ft_lstsize(t_stack *lst);
 void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
 void	find_lis(t_stack **a);
+void	push_nolis(t_stack **a, t_stack **b);
 void	ft_print_error(void);
 void	index_stack(t_stack **a);
 int		is_sorted(t_stack **a);

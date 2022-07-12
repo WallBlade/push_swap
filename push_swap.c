@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:26:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/09 17:59:01 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/12 19:02:25 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,21 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a = ft_get_args(argc, argv);
 	// t_stack	*tmp;
-	// t_stack *b;
+	t_stack *b;
 
-	// b = NULL;
+	b = NULL;
 	// a = stack_min(&a);
 	// printf("%d\n", a->num);
 	// sort_three(&a);
 	// sort_five(&a, &b);
-	index_stack(&a);
 	// push_b(&a, &b);
 	// printf("%d\t", a->num);
 	// printf("%d\n", b->num);
 	get_pos(&a);
 	find_lis(&a);
 	mark_lis(&a);
+	push_nolis(&a, &b);
+	index_stack(&a);
 	ft_print_stack(&a);
 	// tmp = lis_max(&a);
 	// printf("\n\t\tbiggest lis = %d\n", tmp->num);

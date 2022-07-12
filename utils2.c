@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:23:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/09 18:02:41 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/12 19:02:22 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,57 @@ void	mark_lis(t_stack **a)
 
 	i = 0;
 	tmp = lis_max(a);
+	tmp->is_lis = 1;
 	comp = tmp->num;
-	while (i++ < ft_lstsize(*a))
+	while (i < ft_lstsize(*a))
 	{
 		if (comp < tmp->num)
 		{
 			tmp->is_lis = 1;
 			comp = tmp->num;
 		}
+		tmp = tmp->next;
+		i++;
+		if (tmp == NULL)
+			tmp = *a;
+	}
+}
+
+int	only_1(t_stack **a)
+{
+	t_stack *tmp;
+
+	tmp = *a;
+	while (tmp)
+	{
+		if (tmp->is_lis == 0)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+void	push_nolis(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+	
+	tmp = lis_max(a);
+	while (only_1(a))
+	{
+		if (tmp->is_lis == 0)
+		{
+			while (tmp->pos != 1)
+			{
+				if (tmp->pos < (ft_lstsize(*a) / 2))
+					rotate_a(a);
+				else
+					rrotate_a(a);
+				get_pos(a);
+			}
+			push_b(a, b);
+			tmp = lis_max(a);
+		}
+		get_pos(a);
 		tmp = tmp->next;
 		if (tmp == NULL)
 			tmp = *a;
