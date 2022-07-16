@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/12 16:04:56 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/13 15:56:02 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_stack
 	int				pos;
 	int				lis;
 	int				is_lis;
+	int				cost;
 	struct s_stack	*next;
 }				t_stack;
 

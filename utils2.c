@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:23:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/12 19:02:22 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/16 16:14:12 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,11 @@ int	only_1(t_stack **a)
 void	push_nolis(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
-	
+
 	tmp = lis_max(a);
+	int median;
+
+	median = ft_lstsize(*a) / 2;
 	while (only_1(a))
 	{
 		if (tmp->is_lis == 0)
@@ -145,6 +148,8 @@ void	push_nolis(t_stack **a, t_stack **b)
 				get_pos(a);
 			}
 			push_b(a, b);
+			if (tmp->index < median)
+				rotate_b(b);
 			tmp = lis_max(a);
 		}
 		get_pos(a);
@@ -153,6 +158,11 @@ void	push_nolis(t_stack **a, t_stack **b)
 			tmp = *a;
 	}
 }
+
+// int		search_cost(t_stack **b, int num)
+// {
+
+// }
 
 void	index_stack(t_stack **a)
 {
@@ -193,7 +203,7 @@ void	get_pos(t_stack **a)
 int		is_sorted(t_stack **a)
 {
 	t_stack	*tmp;
-	
+
 	tmp = *a;
 	while (tmp)
 	{

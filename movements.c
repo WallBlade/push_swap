@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:27:34 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/07 16:02:04 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/13 12:16:54 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	swap_a(t_stack **a)
 	(*a)->next = tmp->next;
 	tmp->next = *a;
 	*a = tmp;
+	ft_putstr("sa\n");
 }
 
 void	swap_b(t_stack **b)
@@ -34,6 +35,7 @@ void	swap_b(t_stack **b)
 	(*b)->next = tmp->next;
 	tmp->next = *b;
 	*b = tmp;
+	ft_putstr("sb\n");
 }
 
 void	push_a(t_stack **a, t_stack **b)
@@ -45,6 +47,7 @@ void	push_a(t_stack **a, t_stack **b)
 	tmp = (*b)->next;
 	ft_lstadd_front(a, *b);
 	*b = tmp;
+	ft_putstr("pa\n");
 }
 
 void	push_b(t_stack **a, t_stack **b)
@@ -56,6 +59,7 @@ void	push_b(t_stack **a, t_stack **b)
 	tmp = (*a)->next;
 	ft_lstadd_front(b, *a);
 	*a = tmp;
+	ft_putstr("pb\n");
 }
 
 // int main(int argc, char **argv)

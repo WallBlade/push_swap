@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:26:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/12 19:02:25 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/16 16:12:58 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	sort_three(t_stack **a)
 {
 	t_stack	*max;
 
+	// if (ft_lstsize(*a) > 3)
+	// 	ft_print_error();
 	max = stack_max(a);
 	if (max->pos == 1)
 		rotate_a(a);
@@ -61,17 +63,21 @@ int	main(int argc, char **argv)
 	b = NULL;
 	// a = stack_min(&a);
 	// printf("%d\n", a->num);
+	get_pos(&a);
 	// sort_three(&a);
 	// sort_five(&a, &b);
 	// push_b(&a, &b);
 	// printf("%d\t", a->num);
 	// printf("%d\n", b->num);
-	get_pos(&a);
+	index_stack(&a);
 	find_lis(&a);
 	mark_lis(&a);
 	push_nolis(&a, &b);
-	index_stack(&a);
 	ft_print_stack(&a);
+	printf("\n");
+	get_pos(&b);
+	// index_stack(&b);
+	ft_print_stack(&b);
 	// tmp = lis_max(&a);
 	// printf("\n\t\tbiggest lis = %d\n", tmp->num);
 	// printf("%d\n", a->lis);
