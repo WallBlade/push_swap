@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:23:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/16 16:14:12 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:22:56 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,10 +159,26 @@ void	push_nolis(t_stack **a, t_stack **b)
 	}
 }
 
-// int		search_cost(t_stack **b, int num)
-// {
+int		calculate_cost(t_stack **a, t_stack **b, int num)
+{
+	
+}
 
-// }
+t_stack		*search_cost(t_stack **a, t_stack **b, int num)
+{
+	t_stack	*tmp_b;
+	t_stack	*cheap;
+
+	tmp_b = *b;
+	cheap = *b;
+	while (tmp_b)
+	{
+		if (cheap->cost > tmp_b->cost)
+			cheap = tmp_b;
+		tmp_b = tmp_b->next;
+	}
+	return (cheap);
+}
 
 void	index_stack(t_stack **a)
 {

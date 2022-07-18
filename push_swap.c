@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:26:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/16 16:12:58 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:24:31 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,5 @@ int	main(int argc, char **argv)
 
 	return (0);
 }
+
+ARG=`ruby -e "puts (0..50).to_a.shuffle.join(' ')"`
