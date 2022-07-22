@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:23:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/21 17:33:20 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:49:52 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ void	add_cost_a(t_stack **a, t_stack **b)
 		tmp_a = *a;
 		while (tmp_a)
 		{
-			if (tmp_a->index < tmp_b->index && tmp_a->next->index > tmp_b->index)
+			if (tmp_a->next && tmp_b &&tmp_a->index < tmp_b->index && tmp_a->next->index > tmp_b->index)
 			{
 				tmp_b->cost += tmp_a->pos;
 				break;
