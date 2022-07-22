@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:23:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/18 17:22:56 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/21 17:33:20 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,12 +159,51 @@ void	push_nolis(t_stack **a, t_stack **b)
 	}
 }
 
-int		calculate_cost(t_stack **a, t_stack **b, int num)
+void	calculate_cost_b(t_stack **b)
 {
-	
+	t_stack	*tmp_b;
+	int		count;
+
+	tmp_b = *b;
+	while (tmp_b)
+	{
+		count = 0;
+		while (count < tmp_b->pos)
+			count++;
+		if (tmp_b->pos > (ft_lstsize(*b) / 2))
+		{
+			count = (ft_lstsize(*b)) - tmp_b->pos;
+			tmp_b->cost = count + 1;
+		}
+		else
+			tmp_b->cost = count - 1;
+		tmp_b = tmp_b->next;
+	}
 }
 
-t_stack		*search_cost(t_stack **a, t_stack **b, int num)
+void	add_cost_a(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
+
+	tmp_b = *b;
+	while (tmp_b)
+	{
+		tmp_a = *a;
+		while (tmp_a)
+		{
+			if (tmp_a->index < tmp_b->index && tmp_a->next->index > tmp_b->index)
+			{
+				tmp_b->cost += tmp_a->pos;
+				break;
+			}
+			tmp_a = tmp_a->next;
+		}
+		tmp_b = tmp_b->next;
+	}
+}
+
+t_stack		*search_best_cost(t_stack **b)
 {
 	t_stack	*tmp_b;
 	t_stack	*cheap;
@@ -189,7 +228,7 @@ void	index_stack(t_stack **a)
 	tmp = *a;
 	while (tmp)
 	{
-		i = 1;
+		i = 0;
 		tmp2 = *a;
 		while (tmp2)
 		{
@@ -241,6 +280,13 @@ int	ft_strcmp(char *s1, char *s2)
 			return (s1[i] - s2[i]);
 		i++;
 	}
+	return (0);
+}
+
+int	ft_isdigit(char c)
+{
+	if ((c >= '0' && c <= '9') || (c == '-' || c == '+'))
+		return (1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:26:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/18 17:24:31 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/22 12:58:30 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,40 @@ void	sort_five(t_stack **a, t_stack **b)
 	get_pos(a);
 }
 
+void	trier_la_plebe(t_stack **a, t_stack **b)
+{
+	// t_stack	*tmp_a;
+	// t_stack	*tmp_b;
+	t_stack	*cheap;
+	int		i;
+	
+	// tmp_a = *a;
+	// tmp_b = *b;
+	if (ft_lstsize(*a) <= 5)
+		sort_five(a, b);
+	while (!is_sorted(a))
+	{
+		i = 0;
+		cheap = search_best_cost(b);
+		while (i < cheap->cost)
+		{
+			while (cheap->pos != 1)
+			{
+				if (cheap->pos <  (ft_lstsize(*b) / 2))
+					rotate_b(b);
+				else
+					rrotate_b(b);
+				get_pos(b);
+				i++;
+			}
+			rotate_a(a);
+			get_pos(a);
+			i++;
+		}
+		push_a(a, b);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a = ft_get_args(argc, argv);
@@ -77,12 +111,13 @@ int	main(int argc, char **argv)
 	printf("\n");
 	get_pos(&b);
 	// index_stack(&b);
+	calculate_cost_b(&b);
+	add_cost_a(&a, &b);
 	ft_print_stack(&b);
+	// tmp = search_best_cost(&b);
 	// tmp = lis_max(&a);
-	// printf("\n\t\tbiggest lis = %d\n", tmp->num);
+	// printf("\n\t\tcheapest = %d\n value = %d\n", tmp->cost, tmp->num);
 	// printf("%d\n", a->lis);
 
 	return (0);
 }
-
-ARG=`ruby -e "puts (0..50).to_a.shuffle.join(' ')"`
