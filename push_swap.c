@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:26:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/22 14:49:51 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:28:03 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,37 +60,43 @@ void	trier_la_plebe(t_stack **a, t_stack **b)
 	// t_stack	*tmp_b;
 	t_stack	*cheap;
 	int		i;
+	int		j;
 	
 	// tmp_a = *a;
 	// tmp_b = *b;
 	// if (ft_lstsize(*a) <= 5)
 	// 	sort_five(a, b);
-	while (!is_sorted(a))
+	calculate_cost_b(b);
+	printf("test\n");
+	j = add_cost_a(a, b);
+	i = 0;
+	cheap = search_best_cost(b);
+	while (i < cheap->cost)
 	{
-		calculate_cost_b(b);
-		add_cost_a(a, b);
-		i = 0;
-		cheap = search_best_cost(b);
-		while (i < cheap->cost)
+		while (cheap->pos != 1)
 		{
-			while (cheap->pos != 1)
-			{
-				if (cheap->pos <  (ft_lstsize(*b) / 2))
-					rotate_b(b);
-				else
-					rrotate_b(b);
-				get_pos(b);
-				i++;
-			}
-			if (i < ft_lstsize(*a))
-				rotate_a(a);
+			if (cheap->pos <  (ft_lstsize(*b) / 2))
+				rotate_b(b);
 			else
-				rrotate_a(a);
-			get_pos(a);
+				rrotate_b(b);
+			get_pos(b);
 			i++;
 		}
-		push_a(a, b);
+		printf("%d \t%d\t%d\t%d \n", i, j, ft_lstsize(*a) / 2, cheap->cost);
+		if (j <= ft_lstsize(*a) / 2 + 1)
+			rotate_a(a);
+		else
+			rrotate_a(a);
+		get_pos(a);
+		i++;
 	}
+	push_a(a, b);
+	get_pos(a);
+	get_pos(b);
+	ft_print_stack(a);
+	ft_print_stack(b);
+	if (b)
+		trier_la_plebe(a, b);
 }
 
 int	main(int argc, char **argv)
@@ -109,10 +115,10 @@ int	main(int argc, char **argv)
 	// printf("%d\t", a->num);
 	// printf("%d\n", b->num);
 	index_stack(&a);
-	printf("zizi");
 	find_lis(&a);
 	mark_lis(&a);
 	push_nolis(&a, &b);
+	printf("after lis\n");
 	get_pos(&b);
 	calculate_cost_b(&b);
 	add_cost_a(&a, &b);

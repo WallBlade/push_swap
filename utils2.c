@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:23:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/22 14:49:52 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:38:04 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ void	calculate_cost_b(t_stack **b)
 	}
 }
 
-void	add_cost_a(t_stack **a, t_stack **b)
+int	add_cost_a(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
@@ -190,17 +190,23 @@ void	add_cost_a(t_stack **a, t_stack **b)
 	while (tmp_b)
 	{
 		tmp_a = *a;
-		while (tmp_a)
+		while (tmp_a->next)
 		{
-			if (tmp_a->next && tmp_b &&tmp_a->index < tmp_b->index && tmp_a->next->index > tmp_b->index)
+			if ((tmp_a && tmp_a->next) && tmp_a->index < tmp_b->index && tmp_a->next->index > tmp_b->index)
 			{
 				tmp_b->cost += tmp_a->pos;
 				break;
 			}
+			printf("%d\t%d\n", tmp_a->pos, tmp_a->next->pos);
 			tmp_a = tmp_a->next;
 		}
 		tmp_b = tmp_b->next;
 	}
+	printf("test2\n");
+	if (tmp_a->next)
+		return (tmp_a->next->pos);
+	else
+		return (tmp_a->pos);
 }
 
 t_stack		*search_best_cost(t_stack **b)

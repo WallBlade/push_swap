@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 15:16:40 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/22 12:37:19 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/22 14:57:13 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_print_stack(t_stack **a)
 	tmp = *a;
 	i = 0;
 	printf("pos\t|\tvalue\t|\tindex\t|\tlis\t|\tis_lis\t|\tcost\n\n");
-	while (i < 110)
+	while (i < 100)
 	{
 		printf("-");
 		i++;

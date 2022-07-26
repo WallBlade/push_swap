@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/22 12:36:48 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/26 14:37:53 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ t_stack	*lis_max(t_stack **a);
 void	mark_lis(t_stack **a);
 int		ft_lstsize(t_stack *lst);
 void	ft_putstr(char *str);
-int		ft_isdigit(char c);
 int		ft_strcmp(char *s1, char *s2);
 void	find_lis(t_stack **a);
 void	push_nolis(t_stack **a, t_stack **b);
@@ -59,13 +58,14 @@ int		is_sorted(t_stack **a);
 void	get_pos(t_stack **a);
 void	calculate_cost_b(t_stack **b);
 t_stack	*search_best_cost(t_stack **b);
-void	add_cost_a(t_stack **a, t_stack **b);
+int		add_cost_a(t_stack **a, t_stack **b);
 
 //	PARSING
 
 int		ft_treat_args(char **args, int i);
 int		ft_check_doubles(char **args, int i);
 t_stack	*ft_get_args(int argc, char **argv);
+int		ft_isdigit(char c);
 
 //	MOUV's
 
