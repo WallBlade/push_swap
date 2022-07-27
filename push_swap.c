@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 11:26:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/26 15:28:03 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:06:29 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,12 @@ void	sort_five(t_stack **a, t_stack **b)
 
 void	trier_la_plebe(t_stack **a, t_stack **b)
 {
-	// t_stack	*tmp_a;
-	// t_stack	*tmp_b;
 	t_stack	*cheap;
 	int		i;
-	int		j;
 	
-	// tmp_a = *a;
-	// tmp_b = *b;
-	// if (ft_lstsize(*a) <= 5)
-	// 	sort_five(a, b);
-	calculate_cost_b(b);
-	printf("test\n");
-	j = add_cost_a(a, b);
 	i = 0;
 	cheap = search_best_cost(b);
+	printf("cheapest = \t%d\t%d\n", cheap->cost, cheap->pos);
 	while (i < cheap->cost)
 	{
 		while (cheap->pos != 1)
@@ -82,20 +73,20 @@ void	trier_la_plebe(t_stack **a, t_stack **b)
 			get_pos(b);
 			i++;
 		}
-		printf("%d \t%d\t%d\t%d \n", i, j, ft_lstsize(*a) / 2, cheap->cost);
-		if (j <= ft_lstsize(*a) / 2 + 1)
-			rotate_a(a);
-		else
-			rrotate_a(a);
+		rotate_a(a);
 		get_pos(a);
 		i++;
 	}
+	if (cheap->num > (*a)->num)
+		rotate_a(a);
 	push_a(a, b);
 	get_pos(a);
 	get_pos(b);
+	calculate_cost_b(b);
+	add_cost_a(a, b);
 	ft_print_stack(a);
 	ft_print_stack(b);
-	if (b)
+	if (*b)
 		trier_la_plebe(a, b);
 }
 
@@ -120,13 +111,13 @@ int	main(int argc, char **argv)
 	push_nolis(&a, &b);
 	printf("after lis\n");
 	get_pos(&b);
-	calculate_cost_b(&b);
-	add_cost_a(&a, &b);
+	// calculate_cost_b(&b);
+	// add_cost_a(&a, &b);
 	trier_la_plebe(&a, &b);
-	ft_print_stack(&a);
+	// ft_print_stack(&a);
 	printf("\n");
 	// index_stack(&b);
-	ft_print_stack(&b);
+	// ft_print_stack(&b);
 	// tmp = search_best_cost(&b);
 	// tmp = lis_max(&a);
 	// printf("\n\t\tcheapest = %d\n value = %d\n", tmp->cost, tmp->num);
