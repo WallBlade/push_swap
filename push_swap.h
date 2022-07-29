@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/27 14:22:49 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/28 17:43:22 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int		is_sorted(t_stack **a);
 void	get_pos(t_stack **a);
 void	calculate_cost_b(t_stack **b);
 t_stack	*search_best_cost(t_stack **b);
+t_stack	*get_min_costa(t_stack **a, t_stack **b);
 void	add_cost_a(t_stack **a, t_stack **b);
 
 //	PARSING

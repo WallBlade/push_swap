@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 14:23:23 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/27 16:57:40 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/07/28 19:13:24 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_stack	*stack_max(t_stack **a)
 {
 	t_stack	*max;
 	t_stack	*tmp;
-	
+
 	tmp = *a;
 	max = *a;
 	while (tmp)
@@ -32,7 +32,7 @@ t_stack	*stack_min(t_stack **a)
 {
 	t_stack	*min;
 	t_stack	*tmp;
-	
+
 	tmp = *a;
 	min = *a;
 	while (tmp)
@@ -72,11 +72,10 @@ void	find_lis(t_stack **a)
 	}
 }
 
-
 t_stack	*lis_max(t_stack **a)
 {
-	t_stack *tmp;
-	t_stack *max;
+	t_stack	*tmp;
+	t_stack	*max;
 
 	tmp = *a;
 	max = *a;
@@ -115,7 +114,7 @@ void	mark_lis(t_stack **a)
 
 int	only_1(t_stack **a)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *a;
 	while (tmp)
@@ -130,10 +129,9 @@ int	only_1(t_stack **a)
 void	push_nolis(t_stack **a, t_stack **b)
 {
 	t_stack	*tmp;
+	int		median;
 
 	tmp = lis_max(a);
-	int median;
-
 	median = ft_lstsize(*a) / 2;
 	while (only_1(a))
 	{
@@ -193,10 +191,25 @@ void	add_cost_a(t_stack **a, t_stack **b)
 		while (tmp_a)
 		{
 			if ((tmp_a && tmp_a->next) && tmp_a->index < tmp_b->index
-			&& tmp_a->next->index > tmp_b->index)
+				&& tmp_a->next->index > tmp_b->index)
 			{
 				tmp_b->cost += tmp_a->pos;
-				break;
+				break ;
+			}
+			else if (tmp_b->index < stack_min(a)->index)
+			{
+				tmp_b->cost += stack_min(a)->pos - 1;
+				break ;
+			}
+			else if (tmp_b->index > stack_max(a)->index)
+			{
+				tmp_b->cost += stack_max(a)->pos - 1;
+				break ;
+			}
+			else if (tmp_a->next == NULL)
+			{
+				if (tmp_a->index < tmp_b->index && (*a)->index > tmp_b->index)
+					tmp_b->cost += 1;
 			}
 			tmp_a = tmp_a->next;
 		}
@@ -204,11 +217,37 @@ void	add_cost_a(t_stack **a, t_stack **b)
 	}
 }
 
-// t_stack	*get_min_costa(t_stack **a)
-// {
-		
-// }
-t_stack		*search_best_cost(t_stack **b)
+t_stack	*get_min_costa(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
+
+	tmp_b = *b;
+	while (tmp_b)
+	{
+		tmp_a = *a;
+		while (tmp_a)
+		{
+			if ((tmp_a && tmp_a->next) && tmp_a->index < tmp_b->index
+				&& tmp_a->next->index > tmp_b->index)
+				return(tmp_a);
+			else if (tmp_b->index < stack_min(a)->index)
+				return (stack_min(a));
+			else if (tmp_b->index > stack_max(a)->index)
+				return (stack_max(a));
+			else if (tmp_a->next == NULL)
+			{
+				if (tmp_a->index < tmp_b->index && (*a)->index > tmp_b->index)
+					return (*a);
+			}
+			tmp_a = tmp_a->next;
+		}
+		tmp_b = tmp_b->next;
+	}
+	return (NULL);
+}
+
+t_stack	*search_best_cost(t_stack **b)
 {
 	t_stack	*tmp_b;
 	t_stack	*cheap;
