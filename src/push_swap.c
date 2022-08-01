@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 21:01:21 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/01 22:03:08 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	sort_five(t_data **a, t_data **b)
 	while (*a && ft_lstsize(*a) > 3)
 	{
 		min = stack_min(a);
+		printf("min = %d\n", min->num);
 		while (min->pos != 0)
 		{
 			if (min->pos > (ft_lstsize(*a) / 2))
@@ -65,7 +66,7 @@ void	trier_la_plebe(t_data **a, t_data **b)
 	insert = get_min_costa(a, &cheap);
 	while (i < cheap->cost)
 	{
-		while (cheap->pos != 0)
+		while (cheap->pos != 1)
 		{
 			if (cheap->pos < (ft_lstsize(*b) / 2))
 				rotate(b);
@@ -74,9 +75,9 @@ void	trier_la_plebe(t_data **a, t_data **b)
 			get_pos(b);
 			i++;
 		}
-		if (insert->pos != 0 && insert->pos < ft_lstsize(*a) / 2)
+		if (insert->pos != 1 && insert->pos < ft_lstsize(*a) / 2)
 			rotate(a);
-		else if (insert->pos != 0)
+		else if (insert->pos != 1)
 			rrotate(a);
 		get_pos(a);
 		i++;
@@ -98,7 +99,7 @@ void	ft_final_finish_him_sort(t_data **a, t_data **b)
 	trier_la_plebe(a, b);
 	tmp_a = stack_min(a);
 	pos = tmp_a->pos;
-	while (tmp_a->pos != 0)
+	while (tmp_a->pos != 1)
 	{
 		if (pos < ft_lstsize(*a) / 2)
 			rotate(a);
@@ -119,13 +120,19 @@ int	main(int argc, char **argv)
 	index_stack(&a);
 	if (is_sorted(&a))
 		return (ft_free_stack(&a), 0);
+	if (argc > 2 && argc <= 6)
+	{
+		sort_five(&a, &b);
+		ft_print_data(&a);
+		return (0);
+	}
 	find_lis(&a);
 	mark_lis(&a);
 	push_nolis(&a, &b);
 	get_pos(&b);
 	ft_final_finish_him_sort(&a, &b);
+	ft_print_data(&a);
+	printf("\n");
 	ft_free_stack(&a);
-	// ft_print_data(&a);
-	// printf("\n");
 	return (0);
 }

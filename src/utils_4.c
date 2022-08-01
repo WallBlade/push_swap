@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:02:05 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 21:00:18 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/01 21:56:00 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	get_pos(t_data **a)
 	int		pos;
 	t_data	*tmp;
 
-	pos = 0;
+	pos = 1;
 	tmp = *a;
 	while (tmp)
 	{
@@ -93,12 +93,11 @@ void	ft_free_stack(t_data **stack)
 	t_data	*tmp;
 
 	len = ft_lstsize(*stack);
-	while (len >= 0)
+	while (len > 0)
 	{
 		tmp = (*stack)->next;
-		free(stack);
+		free(*stack);
 		(*stack) = tmp;
 		len--;
 	}
-	free(stack);
 }

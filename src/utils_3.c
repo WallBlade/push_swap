@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:00:01 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 13:01:19 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/01 21:48:10 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	is_sorted(t_data **a)
 	tmp = *a;
 	while (tmp)
 	{
-		if (tmp->pos != tmp->index)
+		if (tmp->pos != (tmp->index + 1))
 			return (0);
 		tmp = tmp->next;
 	}

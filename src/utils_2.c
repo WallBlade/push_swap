@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:57:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 18:59:14 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/01 21:52:13 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	push_nolis(t_data **a, t_data **b)
 	{
 		if (tmp->is_lis == 0)
 		{
-			while (tmp->pos != 0)
+			while (tmp->pos != 1)
 			{
 				if (tmp->pos < (ft_lstsize(*a) / 2))
 					rotate(a);
