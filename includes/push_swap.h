@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 13:15:48 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/01 20:52:22 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,51 @@ typedef struct s_data
 	struct s_data	*next;
 }				t_data;
 
-//------------------	UTILS	 ------------------//
+// typedef struct s_data
+// {
+// 	lst
+// }
+
+//------------------	UTILS1	 ------------------//
 
 long	ft_atoi(char *str);
+int		ft_countwords(char *str, char c);
 char	**ft_split(char *str, char c);
 t_data	*ft_lstnew(int nb);
 t_data	*ft_lstlast(t_data *a);
 void	ft_lstadd_back(t_data **lst, t_data *new);
 void	ft_lstadd_front(t_data **lst, t_data *new);
-t_data	*stack_min(t_data **a);
-t_data	*stack_max(t_data **a);
-t_data	*lis_max(t_data **a);
-void	mark_lis(t_data **a);
 int		ft_lstsize(t_data *lst);
 void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
-void	find_lis(t_data **a);
-void	push_nolis(t_data **a, t_data **b);
 void	ft_print_error(void);
 void	index_stack(t_data **a);
 int		is_sorted(t_data **a);
 void	get_pos(t_data **a);
-void	calculate_cost_b(t_data **b);
-t_data	*search_best_cost(t_data **b);
-t_data	*get_min_costa(t_data **a, t_data **b);
+char	**ft_freetab(char **s, int n);
 int		only_1(t_data **a);
+
+//------------------	UTILS2	 ------------------//
+
+t_data	*stack_min(t_data **a);
+t_data	*stack_max(t_data **a);
+t_data	*lis_max(t_data **a);
+void	find_lis(t_data **a);
+void	mark_lis(t_data **a);
+
+//------------------	UTILS3	 ------------------//
+
+void	push_nolis(t_data **a, t_data **b);
+void	calculate_cost_b(t_data **b);
 void	add_cost_a(t_data **a, t_data **b);
+t_data	*get_min_costa(t_data **a, t_data **b);
+t_data	*search_best_cost(t_data **b);
+
+
+//------------------	UTILS4	 ------------------//
+
+void	ft_free_stack(t_data **stack);
+
 
 //-------------------	 PARSING	 -------------------//
 

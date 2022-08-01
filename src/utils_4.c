@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:02:05 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 13:23:22 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/01 21:00:18 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	get_pos(t_data **a)
 	int		pos;
 	t_data	*tmp;
 
-	pos = 1;
+	pos = 0;
 	tmp = *a;
 	while (tmp)
 	{
@@ -85,4 +85,20 @@ long	ft_atoi(char *str)
 	if (res * sign < -2147483648 || res * sign > 2147483647)
 		ft_print_error();
 	return (res * sign);
+}
+
+void	ft_free_stack(t_data **stack)
+{
+	int		len;
+	t_data	*tmp;
+
+	len = ft_lstsize(*stack);
+	while (len >= 0)
+	{
+		tmp = (*stack)->next;
+		free(stack);
+		(*stack) = tmp;
+		len--;
+	}
+	free(stack);
 }

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:47:48 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 12:49:10 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/01 20:42:34 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,17 @@ int	ft_wordlen(char *str, char c, int i)
 	return (len);
 }
 
+char	**ft_freetab(char **s, int n)
+{
+	while (n >= 0)
+	{
+		free(s[n]);
+		n--;
+	}
+	free(s);
+	return (NULL);
+}
+
 char	**ft_split(char *str, char c)
 {
 	int		i;
@@ -65,7 +76,7 @@ char	**ft_split(char *str, char c)
 		k = 0;
 		split[j] = (char *)malloc(sizeof(char) * (ft_wordlen(str, c, i) + 1));
 		if (!split[j])
-			return (NULL);
+			return (ft_freetab(split, j), NULL);
 		while (str[i] && str[i] != c)
 			split[j][k++] = str[i++];
 		split[j][k] = '\0';
