@@ -1,43 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 12:24:31 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/12 16:04:45 by zel-kass         ###   ########.fr       */
+/*   Created: 2022/08/01 12:47:48 by zel-kass          #+#    #+#             */
+/*   Updated: 2022/08/01 12:49:10 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-long	ft_atoi(char *str)
-{
-	int		i;
-	long	res;
-	int		sign;
-
-	i = 0;
-	sign = 1;
-	res = 0;
-	while ((str[i] > 9 && str[i] < 13) || (str[i] == ' '))
-		i++;
-	while (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9' && i < 12)
-	{
-		res = res * 10 + (str[i] - 48);
-		i++;
-	}
-	if (res * sign < -2147483648 || res * sign > 2147483647)
-		ft_print_error();
-	return (res * sign);
-}
+#include "../includes/push_swap.h"
 
 int	ft_countwords(char *str, char c)
 {
@@ -100,16 +73,4 @@ char	**ft_split(char *str, char c)
 	}
 	split[j] = 0;
 	return (split);
-}
-
-void	ft_putstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
 }

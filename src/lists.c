@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_lists.c                                  :+:      :+:    :+:   */
+/*   lists.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 21:45:47 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/11 15:08:35 by zel-kass         ###   ########.fr       */
+/*   Created: 2022/08/01 12:41:14 by zel-kass          #+#    #+#             */
+/*   Updated: 2022/08/01 13:09:16 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-t_stack	*ft_lstnew(int nb)
+t_data	*ft_lstnew(int nb)
 {
-	t_stack	*a;
+	t_data	*a;
 
 	a = malloc(sizeof(*a) * 1);
 	if (!a)
@@ -25,9 +25,9 @@ t_stack	*ft_lstnew(int nb)
 	return (a);
 }
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+void	ft_lstadd_back(t_data **lst, t_data *new)
 {
-	t_stack	*tmp;
+	t_data	*tmp;
 
 	tmp = *lst;
 	if (!new)
@@ -42,13 +42,13 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 	tmp->next = new;
 }
 
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
+void	ft_lstadd_front(t_data **lst, t_data *new)
 {
 	new->next = *lst;
 	*lst = new;
 }
 
-int	ft_lstsize(t_stack *lst)
+int	ft_lstsize(t_data *lst)
 {
 	int	i;
 
@@ -61,7 +61,7 @@ int	ft_lstsize(t_stack *lst)
 	return (i);
 }
 
-t_stack	*ft_lstlast(t_stack *a)
+t_data	*ft_lstlast(t_data *a)
 {
 	if (!a)
 		return (NULL);

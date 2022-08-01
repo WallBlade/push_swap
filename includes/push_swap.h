@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/28 17:43:22 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/01 13:15:48 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 
-// typedef struct	s_big
-// {
-// 	t_stack	*a;
-// 	t_stack	*b;	
-// }				t_big;
-
-typedef struct s_stack
+typedef struct s_data
 {
 	int				num;
 	int				index;
@@ -32,55 +26,55 @@ typedef struct s_stack
 	int				lis;
 	int				is_lis;
 	int				cost;
-	struct s_stack	*next;
-}				t_stack;
+	struct s_data	*next;
+}				t_data;
 
-// UTILS
+//------------------	UTILS	 ------------------//
 
 long	ft_atoi(char *str);
 char	**ft_split(char *str, char c);
-t_stack	*ft_lstnew(int nb);
-t_stack	*ft_lstlast(t_stack *a);
-void	ft_lstadd_back(t_stack **lst, t_stack *new);
-void	ft_lstadd_front(t_stack **lst, t_stack *new);
-t_stack	*stack_min(t_stack **a);
-t_stack	*stack_max(t_stack **a);
-t_stack	*lis_max(t_stack **a);
-void	mark_lis(t_stack **a);
-int		ft_lstsize(t_stack *lst);
+t_data	*ft_lstnew(int nb);
+t_data	*ft_lstlast(t_data *a);
+void	ft_lstadd_back(t_data **lst, t_data *new);
+void	ft_lstadd_front(t_data **lst, t_data *new);
+t_data	*stack_min(t_data **a);
+t_data	*stack_max(t_data **a);
+t_data	*lis_max(t_data **a);
+void	mark_lis(t_data **a);
+int		ft_lstsize(t_data *lst);
 void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
-void	find_lis(t_stack **a);
-void	push_nolis(t_stack **a, t_stack **b);
+void	find_lis(t_data **a);
+void	push_nolis(t_data **a, t_data **b);
 void	ft_print_error(void);
-void	index_stack(t_stack **a);
-int		is_sorted(t_stack **a);
-void	get_pos(t_stack **a);
-void	calculate_cost_b(t_stack **b);
-t_stack	*search_best_cost(t_stack **b);
-t_stack	*get_min_costa(t_stack **a, t_stack **b);
-void	add_cost_a(t_stack **a, t_stack **b);
+void	index_stack(t_data **a);
+int		is_sorted(t_data **a);
+void	get_pos(t_data **a);
+void	calculate_cost_b(t_data **b);
+t_data	*search_best_cost(t_data **b);
+t_data	*get_min_costa(t_data **a, t_data **b);
+int		only_1(t_data **a);
+void	add_cost_a(t_data **a, t_data **b);
 
-//	PARSING
+//-------------------	 PARSING	 -------------------//
 
 int		ft_treat_args(char **args, int i);
 int		ft_check_doubles(char **args, int i);
-t_stack	*ft_get_args(int argc, char **argv);
+t_data	*ft_get_args(int argc, char **argv);
 int		ft_isdigit(char c);
 
-//	MOUV's
+//------------------	OPERATIONS	 ------------------//
 
-void	swap_a(t_stack **a);
-void	swap_b(t_stack **b);
-void	push_b(t_stack **a, t_stack **b);
-void	push_a(t_stack **a, t_stack **b);
-void	rotate_a(t_stack **a);
-void	rotate_b(t_stack **b);
-void	rrotate_a(t_stack **a);
-void	rrotate_b(t_stack **b);
+void	swap(t_data **stack);
+void	push_a(t_data **a, t_data **b);
+void	push_b(t_data **a, t_data **b);
+void	rotate(t_data **stack);
+void	rrotate(t_data **stack);
+void	rr(t_data **a, t_data **b);
+void	rrr(t_data **a, t_data **b);
 
-//	PRINT
+//--------------------	   PRINT	 --------------------//
 
-void	ft_print_stack(t_stack **a);
+void	ft_print_data(t_data **a);
 
 #endif

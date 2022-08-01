@@ -1,5 +1,6 @@
-SRC		=	push_swap.c push_swap_utils.c utils2.c print.c \
-			parsing.c movements.c movements2.c push_swap_lists.c \
+SRC		=	src/op_push_swap.c src/op_rotate_reverse.c src/push_swap.c src/print.c \
+			src/ft_split.c src/lists.c src/parsing.c src/utils_1.c src/utils_2.c \
+			src/utils_3.c src/utils_4.c \
 
 OBJ		= $(SRC:.c=.o)
 

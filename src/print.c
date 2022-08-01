@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 15:16:40 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/07/22 14:57:13 by zel-kass         ###   ########.fr       */
+/*   Created: 2022/08/01 13:21:06 by zel-kass          #+#    #+#             */
+/*   Updated: 2022/08/01 13:22:38 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void	ft_print_stack(t_stack **a)
+void	ft_print_data(t_data **a)
 {
-	t_stack	*tmp;
+	t_data	*tmp;
 	int		i;
 	
 	tmp = *a;
