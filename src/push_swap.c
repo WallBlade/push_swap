@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 22:03:08 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:19:49 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void	sort_five(t_data **a, t_data **b)
 	while (*a && ft_lstsize(*a) > 3)
 	{
 		min = stack_min(a);
-		printf("min = %d\n", min->num);
-		while (min->pos != 0)
+		while (min->pos != 1)
 		{
 			if (min->pos > (ft_lstsize(*a) / 2))
 				rrotate(a);
@@ -123,15 +122,19 @@ int	main(int argc, char **argv)
 	if (argc > 2 && argc <= 6)
 	{
 		sort_five(&a, &b);
-		ft_print_data(&a);
+		// ft_print_data(&a);
 		return (0);
 	}
-	find_lis(&a);
-	mark_lis(&a);
-	push_nolis(&a, &b);
-	get_pos(&b);
-	ft_final_finish_him_sort(&a, &b);
+	while (!is_sorted(&a))
+	{
+		find_lis(&a);
+		mark_lis(&a);
+		push_nolis(&a, &b);
+		get_pos(&b);
+		ft_final_finish_him_sort(&a, &b);
+	}
 	ft_print_data(&a);
+	printf("is_sorted = %d\n", is_sorted(&a));
 	printf("\n");
 	ft_free_stack(&a);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 20:52:22 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/02 17:20:04 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ typedef struct s_data
 	int				cost;
 	struct s_data	*next;
 }				t_data;
-
-// typedef struct s_data
-// {
-// 	lst
-// }
 
 //------------------	UTILS1	 ------------------//
 
