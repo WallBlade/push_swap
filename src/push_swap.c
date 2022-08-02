@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/02 18:19:49 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/02 21:28:06 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	sort_three(t_data **a)
 	t_data	*max;
 
 	max = stack_max(a);
-	if (max->pos == 0)
-		rotate(a);
 	if (max->pos == 1)
-		rrotate(a);
+		rotate(a, 'a');
 	if (max->pos == 2)
-		swap(a);
+		rrotate(a, 'a');
+	if (max->pos == 3)
+		swap(a, 'a');
 	get_pos(a);
 	if (!is_sorted(a))
 		sort_three(a);
@@ -38,9 +38,9 @@ void	sort_five(t_data **a, t_data **b)
 		while (min->pos != 1)
 		{
 			if (min->pos > (ft_lstsize(*a) / 2))
-				rrotate(a);
+				rrotate(a, 'a');
 			else
-				rotate(a);
+				rotate(a, 'a');
 			get_pos(a);
 		}
 		push_b(a, b);
@@ -68,21 +68,21 @@ void	trier_la_plebe(t_data **a, t_data **b)
 		while (cheap->pos != 1)
 		{
 			if (cheap->pos < (ft_lstsize(*b) / 2))
-				rotate(b);
+				rotate(b, 'b');
 			else
-				rrotate(b);
+				rrotate(b, 'b');
 			get_pos(b);
 			i++;
 		}
 		if (insert->pos != 1 && insert->pos < ft_lstsize(*a) / 2)
-			rotate(a);
+			rotate(a, 'a');
 		else if (insert->pos != 1)
-			rrotate(a);
+			rrotate(a, 'a');
 		get_pos(a);
 		i++;
 	}
 	if (cheap->num > (*a)->num)
-		rotate(a);
+		rotate(a, 'a');
 	push_a(a, b);
 	get_pos(a);
 	get_pos(b);
@@ -101,9 +101,9 @@ void	ft_final_finish_him_sort(t_data **a, t_data **b)
 	while (tmp_a->pos != 1)
 	{
 		if (pos < ft_lstsize(*a) / 2)
-			rotate(a);
+			rotate(a, 'a');
 		else
-			rrotate(a);
+			rrotate(a, 'a');
 		get_pos(a);
 	}
 }
@@ -112,14 +112,16 @@ int	main(int argc, char **argv)
 {
 	t_data	*a;
 	t_data	*b;
+	char	**params;
 
-	a = ft_get_args(argc, argv);
+	params = argv;
+	a = ft_get_args(argc, params);
 	b = NULL;
 	get_pos(&a);
 	index_stack(&a);
 	if (is_sorted(&a))
 		return (ft_free_stack(&a), 0);
-	if (argc > 2 && argc <= 6)
+	if (ft_lstsize(a) >= 2 && ft_lstsize(a) <= 5)
 	{
 		sort_five(&a, &b);
 		// ft_print_data(&a);
@@ -133,9 +135,8 @@ int	main(int argc, char **argv)
 		get_pos(&b);
 		ft_final_finish_him_sort(&a, &b);
 	}
-	ft_print_data(&a);
-	printf("is_sorted = %d\n", is_sorted(&a));
-	printf("\n");
+	// ft_print_data(&a);
+	// printf("is_sorted = %d\n", is_sorted(&a));
 	ft_free_stack(&a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/02 17:20:04 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/02 20:24:11 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ int		ft_isdigit(char c);
 
 //------------------	OPERATIONS	 ------------------//
 
-void	swap(t_data **stack);
+void	swap(t_data **stack, char c);
 void	push_a(t_data **a, t_data **b);
 void	push_b(t_data **a, t_data **b);
-void	rotate(t_data **stack);
-void	rrotate(t_data **stack);
+void	rotate(t_data **stack, char c);
+void	rrotate(t_data **stack, char c);
 void	rr(t_data **a, t_data **b);
 void	rrr(t_data **a, t_data **b);
 

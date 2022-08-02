@@ -6,13 +6,13 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:02:47 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 13:15:25 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/02 20:23:33 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap(t_data **stack)
+void	swap(t_data **stack, char c)
 {
 	t_data	*tmp;
 
@@ -22,7 +22,10 @@ void	swap(t_data **stack)
 	(*stack)->next = tmp->next;
 	tmp->next = *stack;
 	*stack = tmp;
-	ft_putstr("sa\n");
+	if (c == 'a')
+		ft_putstr("sa\n");
+	else
+		ft_putstr("sb\n");
 }
 
 void	push_a(t_data **a, t_data **b)

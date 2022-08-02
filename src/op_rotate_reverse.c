@@ -6,13 +6,13 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:03:29 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 12:43:59 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/02 20:22:56 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	rotate(t_data **stack)
+void	rotate(t_data **stack, char c)
 {
 	t_data	*tmp;
 
@@ -22,10 +22,13 @@ void	rotate(t_data **stack)
 	*stack = (*stack)->next;
 	ft_lstadd_back(stack, tmp);
 	tmp->next = NULL;
-	ft_putstr("ra\n");
+	if (c == 'a')
+		ft_putstr("ra\n");
+	else
+		ft_putstr("rb\n");
 }
 
-void	rrotate(t_data **stack)
+void	rrotate(t_data **stack, char c)
 {
 	t_data	*tmp;
 
@@ -41,17 +44,20 @@ void	rrotate(t_data **stack)
 	}
 	ft_lstadd_front(stack, tmp->next);
 	tmp->next = NULL;
-	ft_putstr("rra\n");
+	if (c == 'a')
+		ft_putstr("rra\n");
+	else
+		ft_putstr("rrb\n");
 }
 
 void	rr(t_data **a, t_data **b)
 {
-	rotate(a);
-	rotate(b);
+	rotate(a, 'a');
+	rotate(b, 'b');
 }
 
 void	rrr(t_data **a, t_data **b)
 {
-	rrotate(a);
-	rrotate(b);
+	rrotate(a, 'a');
+	rrotate(b, 'b');
 }

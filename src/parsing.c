@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:45:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 20:38:58 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:45:20 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,18 @@ int	ft_treat_args(char **args, int i)
 	return (1);
 }
 
-t_data	*ft_get_args(int argc, char **argv)
+t_data	*ft_get_args(int argc, char **params)
 {
 	int		i;
-	char	**params;
 	t_data	*a;
 
 	i = 1;
-	params = argv;
 	a = NULL;
-	if (argc == 2 && ft_countwords(argv[1], ' ') < 2)
+	if (argc == 2 && ft_countwords(params[1], ' ') < 2)
 		exit (EXIT_FAILURE);
 	if (argc == 2)
 	{
-		params = ft_split(argv[1], ' ');
+		params = ft_split(params[1], ' ');
 		i = 0;
 	}
 	if (ft_treat_args(params, i) == 1)
@@ -76,10 +74,10 @@ t_data	*ft_get_args(int argc, char **argv)
 	else
 	{
 		if (argc == 2)
-			ft_freetab(params, ft_countwords(argv[1], ' '));
+			ft_freetab(params, ft_countwords(params[1], ' '));
 		ft_print_error();
 	}
 	if (argc == 2)
-		ft_freetab(params, ft_countwords(argv[1], ' '));
+		ft_freetab(params, ft_countwords(params[1], ' '));
 	return (a);
 }

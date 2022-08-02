@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:57:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 21:52:13 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/02 20:27:43 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	push_nolis(t_data **a, t_data **b)
 			while (tmp->pos != 1)
 			{
 				if (tmp->pos < (ft_lstsize(*a) / 2))
-					rotate(a);
+					rotate(a, 'a');
 				else
-					rrotate(a);
+					rrotate(a, 'a');
 				get_pos(a);
 			}
 			push_b(a, b);
 			if (tmp->index < median)
-				rotate(b);
+				rotate(b, 'b');
 			tmp = lis_max(a);
 		}
 		get_pos(a);
