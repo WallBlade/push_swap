@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/02 21:28:06 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:56:16 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,31 +56,12 @@ void	trier_la_plebe(t_data **a, t_data **b)
 {
 	t_data	*cheap;
 	t_data	*insert;
-	int		i;
 
-	i = 0;
 	calculate_cost_b(b);
 	add_cost_a(a, b);
 	cheap = search_best_cost(b);
 	insert = get_min_costa(a, &cheap);
-	while (i < cheap->cost)
-	{
-		while (cheap->pos != 1)
-		{
-			if (cheap->pos < (ft_lstsize(*b) / 2))
-				rotate(b, 'b');
-			else
-				rrotate(b, 'b');
-			get_pos(b);
-			i++;
-		}
-		if (insert->pos != 1 && insert->pos < ft_lstsize(*a) / 2)
-			rotate(a, 'a');
-		else if (insert->pos != 1)
-			rrotate(a, 'a');
-		get_pos(a);
-		i++;
-	}
+	sort_big(a, b, cheap, insert);
 	if (cheap->num > (*a)->num)
 		rotate(a, 'a');
 	push_a(a, b);
@@ -127,16 +108,16 @@ int	main(int argc, char **argv)
 		// ft_print_data(&a);
 		return (0);
 	}
+	find_lis(&a);
+	mark_lis(&a);
 	while (!is_sorted(&a))
 	{
-		find_lis(&a);
-		mark_lis(&a);
 		push_nolis(&a, &b);
 		get_pos(&b);
 		ft_final_finish_him_sort(&a, &b);
 	}
-	// ft_print_data(&a);
-	// printf("is_sorted = %d\n", is_sorted(&a));
+	ft_print_data(&a);
+	printf("is_sorted = %d\n", is_sorted(&a));
 	ft_free_stack(&a);
 	return (0);
 }

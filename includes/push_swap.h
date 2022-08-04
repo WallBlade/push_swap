@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/02 20:24:11 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:53:41 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	index_stack(t_data **a);
 int		is_sorted(t_data **a);
 void	get_pos(t_data **a);
 char	**ft_freetab(char **s, int n);
+void	sort_big(t_data **a, t_data **b, t_data *cheap, t_data *insert);
 int		only_1(t_data **a);
 
 //------------------	UTILS2	 ------------------//
