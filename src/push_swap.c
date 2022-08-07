@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/03 19:56:16 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/07 22:31:52 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,16 @@ void	trier_la_plebe(t_data **a, t_data **b)
 	t_data	*cheap;
 	t_data	*insert;
 
+	if (!*b)
+		return ;
 	calculate_cost_b(b);
 	add_cost_a(a, b);
+	total_cost(b);
 	cheap = search_best_cost(b);
 	insert = get_min_costa(a, &cheap);
+	// printf("insert = %d\n", insert->index);
+	// ft_print_data(a);
+	// ft_print_data(b);
 	sort_big(a, b, cheap, insert);
 	if (cheap->num > (*a)->num)
 		rotate(a, 'a');
@@ -93,31 +99,31 @@ int	main(int argc, char **argv)
 {
 	t_data	*a;
 	t_data	*b;
-	char	**params;
 
-	params = argv;
-	a = ft_get_args(argc, params);
+	a = ft_init_stack(argc, argv);
 	b = NULL;
-	get_pos(&a);
-	index_stack(&a);
 	if (is_sorted(&a))
 		return (ft_free_stack(&a), 0);
 	if (ft_lstsize(a) >= 2 && ft_lstsize(a) <= 5)
 	{
 		sort_five(&a, &b);
-		// ft_print_data(&a);
 		return (0);
 	}
-	find_lis(&a);
-	mark_lis(&a);
-	while (!is_sorted(&a))
-	{
-		push_nolis(&a, &b);
-		get_pos(&b);
-		ft_final_finish_him_sort(&a, &b);
-	}
-	ft_print_data(&a);
-	printf("is_sorted = %d\n", is_sorted(&a));
+	push_nolis(&a, &b);
+	// printf("after lis\n");
+	get_pos(&b);
+	// calculate_cost_b(&b);
+	// add_cost_a(&a, &b);
+	// for (int i = 0; i < 5; i++)
+	// {
+	// 	ft_print_data(&a);
+	// 	ft_print_data(&b);
+	// 	trier_la_plebe(&a, &b);
+	// }
+	ft_final_finish_him_sort(&a, &b);
+	// ft_print_data(&a);
+	// ft_print_data(&b);
+	// printf("is_sorted = %d\n", is_sorted(&a));
 	ft_free_stack(&a);
 	return (0);
 }

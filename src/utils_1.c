@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:55:45 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/02 17:56:54 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/05 17:00:09 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	find_lis(t_data **a)
 	tmp = *a;
 	while (tmp)
 	{
-		i = -1;
+		i = 0;
 		save = tmp->num;
 		tmp2 = tmp;
-		while (i++ < ft_lstsize(*a))
+		while (i < ft_lstsize(*a))
 		{
 			if (save < tmp2->num)
 			{
@@ -67,6 +67,7 @@ void	find_lis(t_data **a)
 			tmp2 = tmp2->next;
 			if (tmp2 == NULL)
 				tmp2 = *a;
+			i++;
 		}
 		tmp = tmp->next;
 	}

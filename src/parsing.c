@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:45:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/02 18:45:20 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/04 15:28:44 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,22 @@ t_data	*ft_get_args(int argc, char **params)
 	}
 	if (argc == 2)
 		ft_freetab(params, ft_countwords(params[1], ' '));
+	return (a);
+}
+
+t_data	*ft_init_stack(int argc, char **argv)
+{
+	t_data	*a;
+	char	**params;
+
+	params = argv;
+	a = ft_get_args(argc, params);
+	get_pos(&a);
+	index_stack(&a);
+	if (ft_lstsize(a) > 5)
+	{
+		find_lis(&a);
+		mark_lis(&a);
+	}
 	return (a);
 }

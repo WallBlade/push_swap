@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:47:48 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/03 19:53:11 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/07 22:15:50 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,18 +91,18 @@ void	sort_big(t_data **a, t_data **b, t_data *cheap, t_data *insert)
 	int	i;
 
 	i = 0;
-	while (i < cheap->cost)
+	while (i < cheap->total)
 	{
 		while (cheap->pos != 1)
 		{
-			if (cheap->pos < (ft_lstsize(*b) / 2))
+			if (cheap->pos <= (ft_lstsize(*b) / 2))
 				rotate(b, 'b');
 			else
 				rrotate(b, 'b');
 			get_pos(b);
 			i++;
 		}
-		if (insert->pos != 1 && insert->pos < ft_lstsize(*a) / 2)
+		if (insert->pos != 1 && insert->pos <= ft_lstsize(*a) / 2)
 			rotate(a, 'a');
 		else if (insert->pos != 1)
 			rrotate(a, 'a');

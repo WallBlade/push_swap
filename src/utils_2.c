@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:57:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/02 20:27:43 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/07 22:24:09 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	push_nolis(t_data **a, t_data **b)
 		{
 			while (tmp->pos != 1)
 			{
-				if (tmp->pos < (ft_lstsize(*a) / 2))
+				if (tmp->pos <= (ft_lstsize(*a) / 2))
 					rotate(a, 'a');
 				else
 					rrotate(a, 'a');
@@ -47,20 +47,19 @@ void	calculate_cost_b(t_data **b)
 {
 	t_data	*tmp_b;
 	int		count;
+	int		len;
 
 	tmp_b = *b;
+	len = ft_lstsize(*b);
 	while (tmp_b)
 	{
 		count = 0;
 		while (count < tmp_b->pos)
 			count++;
-		if (tmp_b->pos > (ft_lstsize(*b) / 2))
-		{
-			count = (ft_lstsize(*b)) - tmp_b->pos;
-			tmp_b->cost = count + 1;
-		}
+		if (tmp_b->pos > len / 2 + 1)
+			tmp_b->cost_b = len - tmp_b->pos + 1;
 		else
-			tmp_b->cost = count - 1;
+			tmp_b->cost_b = count - 1;
 		tmp_b = tmp_b->next;
 	}
 }
@@ -71,34 +70,48 @@ void	add_cost_a(t_data **a, t_data **b)
 	t_data	*tmp_b;
 
 	tmp_b = *b;
+	tmp_a = *a;
+	if (tmp_a->index > tmp_b->index && ft_lstlast(*a)->index < tmp_b->index)
+		tmp_b->cost_a = 0;
 	while (tmp_b)
 	{
-		tmp_a = *a;
+		tmp_a = (*a)->next;
 		while (tmp_a)
 		{
 			if ((tmp_a && tmp_a->next) && tmp_a->index < tmp_b->index
 				&& tmp_a->next->index > tmp_b->index)
-			{
-				tmp_b->cost += tmp_a->pos;
-				break ;
-			}
+				decide_cost(a, tmp_a, tmp_b);
 			else if (tmp_b->index < stack_min(a)->index)
-			{
-				tmp_b->cost += stack_min(a)->pos - 1;
-				break ;
-			}
+				decide_cost(a, stack_min(a), tmp_b);
 			else if (tmp_b->index > stack_max(a)->index)
-			{
-				tmp_b->cost += stack_max(a)->pos - 1;
-				break ;
-			}
+				decide_cost(a, stack_max(a), tmp_b);
 			else if (tmp_a->next == NULL)
 			{
 				if (tmp_a->index < tmp_b->index && (*a)->index > tmp_b->index)
-					tmp_b->cost += 1;
+					tmp_b->cost_a = 0;
 			}
 			tmp_a = tmp_a->next;
 		}
+		tmp_b = tmp_b->next;
+	}
+}
+void	decide_cost(t_data **a, t_data *tmp_a, t_data *tmp_b)
+{
+	if (tmp_a->pos < ft_lstsize(*a) / 2)
+		tmp_b->cost_a = tmp_a->pos;
+	else
+		tmp_b->cost_a = ft_lstsize(*a) - tmp_a->pos + 1;
+}
+
+
+void	total_cost(t_data **b)
+{
+	t_data	*tmp_b;
+
+	tmp_b = *b;
+	while (tmp_b)
+	{
+		tmp_b->total = tmp_b->cost_a + tmp_b->cost_b;
 		tmp_b = tmp_b->next;
 	}
 }
@@ -109,29 +122,66 @@ t_data	*get_min_costa(t_data **a, t_data **b)
 	t_data	*tmp_b;
 
 	tmp_b = *b;
-	while (tmp_b)
+	tmp_a = *a;
+	if (tmp_a->index > tmp_b->index && ft_lstlast(*a)->index < tmp_b->index)
+		return (tmp_a);
+	while (tmp_a)
 	{
-		tmp_a = *a;
-		while (tmp_a)
+		if ((tmp_a && tmp_a->next) && tmp_a->index < tmp_b->index
+			&& tmp_a->next->index > tmp_b->index)
+			return (tmp_a);
+		else if (tmp_b->index < stack_min(a)->index)
+			return (stack_min(a));
+		else if (tmp_b->index > stack_max(a)->index)
+			return (stack_max(a));
+		else if (tmp_a->next == NULL)
 		{
-			if ((tmp_a && tmp_a->next) && tmp_a->index < tmp_b->index
-				&& tmp_a->next->index > tmp_b->index)
-				return (tmp_a);
-			else if (tmp_b->index < stack_min(a)->index)
-				return (stack_min(a));
-			else if (tmp_b->index > stack_max(a)->index)
-				return (stack_max(a));
-			else if (tmp_a->next == NULL)
-			{
-				if (tmp_a->index < tmp_b->index && (*a)->index > tmp_b->index)
-					return (*a);
-			}
-			tmp_a = tmp_a->next;
+			if (tmp_a->index < tmp_b->index && (*a)->index > tmp_b->index)
+				return (*a);
 		}
-		tmp_b = tmp_b->next;
+		tmp_a = tmp_a->next;
 	}
 	return (NULL);
 }
+
+
+// void	add_cost_a(t_data **a, t_data **b)
+// {
+// 	t_data	*tmp_a;
+// 	t_data	*tmp_b;
+
+// 	tmp_b = *b;
+// 	while (tmp_b)
+// 	{
+// 		tmp_a = *a;
+// 		while (tmp_a)
+// 		{
+// 			if ((tmp_a && tmp_a->next) && tmp_a->index < tmp_b->index
+// 				&& tmp_a->next->index > tmp_b->index)
+// 			{
+// 				decide_cost(a, tmp_a, tmp_b);
+// 				break ;
+// 			}
+// 			else if (tmp_b->index < stack_min(a)->index)
+// 			{
+// 				decide_cost(a, stack_min(a), tmp_b);
+// 				break ;
+// 			}
+// 			else if (tmp_b->index > stack_max(a)->index)
+// 			{
+// 				decide_cost(a, stack_max(a), tmp_b);
+// 				break ;
+// 			}
+// 			else if (tmp_a->next == NULL)
+// 			{
+// 				if (tmp_a->index < tmp_b->index && (*a)->index > tmp_b->index)
+// 					tmp_b->cost_a += 1;
+// 			}
+// 			tmp_a = tmp_a->next;
+// 		}
+// 		tmp_b = tmp_b->next;
+// 	}
+// }
 
 t_data	*search_best_cost(t_data **b)
 {
@@ -142,7 +192,7 @@ t_data	*search_best_cost(t_data **b)
 	cheap = *b;
 	while (tmp_b)
 	{
-		if (cheap->cost > tmp_b->cost)
+		if (cheap->total > tmp_b->total)
 			cheap = tmp_b;
 		tmp_b = tmp_b->next;
 	}
