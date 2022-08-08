@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/08 14:53:29 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/08 19:26:54 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,19 @@ void	ft_final_finish_him_sort(t_data **a, t_data **b)
 	trier_la_plebe(a, b);
 	tmp_a = stack_min(a);
 	pos = tmp_a->pos;
-	while (tmp_a->pos != 1)
+	int size = ft_lstsize(*a);
+	while (tmp_a->pos != 1 && tmp_a->pos <= size)
 	{
-		if (pos < ft_lstsize(*a) / 2)
+		if (pos < size / 2)
+		{
 			rotate(a, 'a');
+			tmp_a->pos--;
+		}
 		else
+		{
 			rrotate(a, 'a');
-		get_pos(a);
+			tmp_a->pos++;
+		}
 	}
 }
 
@@ -127,6 +133,7 @@ int	main(int argc, char **argv)
 	ft_final_finish_him_sort(&a, &b);
 	// ft_print_data(&a);
 	// ft_print_data(&b);
+	// get_pos(&a);
 	// printf("is_sorted = %d\n", is_sorted(&a));
 	ft_free_stack(&a);
 	return (0);

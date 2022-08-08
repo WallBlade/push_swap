@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/08 13:56:58 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/08 18:41:04 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	sort_big(t_data **a, t_data **b, t_data *cheap, t_data *insert);
 void	decide_cost(t_data **a, t_data *tmp_a, t_data *tmp_b);
 void	total_cost(t_data **b);
 t_data	*ft_init_stack(int argc, char **argv);
+t_data	*ft_catch_errors(int argc, char **params);
 int		only_1(t_data **a);
 
 //------------------	UTILS2	 ------------------//
@@ -85,7 +86,7 @@ void	ft_free_stack(t_data **stack);
 
 int		ft_treat_args(char **args, int i);
 int		ft_check_doubles(char **args, int i);
-t_data	*ft_get_args(int argc, char **argv);
+t_data	*ft_catch_errors(int argc, char **argv);
 int		ft_isdigit(char c);
 
 //------------------	OPERATIONS	 ------------------//

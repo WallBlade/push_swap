@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:45:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/04 15:28:44 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/08 18:46:47 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,23 @@ int	ft_treat_args(char **args, int i)
 	return (1);
 }
 
-t_data	*ft_get_args(int argc, char **params)
+t_data	*ft_get_args(int argc, char **params, int i, t_data *a)
+{
+	if (ft_treat_args(params, i) == 1)
+	{
+		while (params[i])
+			ft_lstadd_back(&a, ft_lstnew(ft_atoi(params[i++])));
+	}
+	else
+	{
+		if (argc == 2)
+			ft_freetab(params, ft_countwords(params[1], ' '));
+		ft_print_error();
+	}
+	return (a);
+}
+
+t_data	*ft_catch_errors(int argc, char **params)
 {
 	int		i;
 	t_data	*a;
@@ -66,21 +82,12 @@ t_data	*ft_get_args(int argc, char **params)
 		params = ft_split(params[1], ' ');
 		i = 0;
 	}
-	if (ft_treat_args(params, i) == 1)
-	{
-		while (params[i])
-			ft_lstadd_back(&a, ft_lstnew(ft_atoi(params[i++])));
-	}
-	else
-	{
-		if (argc == 2)
-			ft_freetab(params, ft_countwords(params[1], ' '));
-		ft_print_error();
-	}
+	a = ft_get_args(argc, params, i, a);
 	if (argc == 2)
 		ft_freetab(params, ft_countwords(params[1], ' '));
 	return (a);
 }
+
 
 t_data	*ft_init_stack(int argc, char **argv)
 {
@@ -88,7 +95,7 @@ t_data	*ft_init_stack(int argc, char **argv)
 	char	**params;
 
 	params = argv;
-	a = ft_get_args(argc, params);
+	a = ft_catch_errors(argc, params);
 	get_pos(&a);
 	index_stack(&a);
 	if (ft_lstsize(a) > 5)
