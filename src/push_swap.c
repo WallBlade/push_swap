@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/07 22:31:52 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/08 14:53:29 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,10 @@ int	main(int argc, char **argv)
 		sort_five(&a, &b);
 		return (0);
 	}
+	// printf("test\n\n");
+	// ft_print_data(&a);
+	// ft_print_data(&b);
+	// printf("before lis\n");
 	push_nolis(&a, &b);
 	// printf("after lis\n");
 	get_pos(&b);

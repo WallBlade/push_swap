@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/05 17:15:16 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/08 13:56:58 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ typedef struct s_data
 	int				total;
 	struct s_data	*next;
 }				t_data;
+
+typedef struct s_global
+{
+	int				min;
+	int				max;
+}				t_global;
+
 
 //------------------	UTILS1	 ------------------//
 
@@ -70,11 +77,9 @@ void	add_cost_a(t_data **a, t_data **b);
 t_data	*get_min_costa(t_data **a, t_data **b);
 t_data	*search_best_cost(t_data **b);
 
-
 //------------------	UTILS4	 ------------------//
 
 void	ft_free_stack(t_data **stack);
-
 
 //-------------------	 PARSING	 -------------------//
 

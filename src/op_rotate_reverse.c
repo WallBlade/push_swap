@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:03:29 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/02 20:22:56 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/08 14:42:57 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	rotate(t_data **stack, char c)
 	ft_lstadd_back(stack, tmp);
 	tmp->next = NULL;
 	if (c == 'a')
-		ft_putstr("ra\n");
+		printf("ra\n");
 	else
-		ft_putstr("rb\n");
+		printf("rb\n");
 }
 
 void	rrotate(t_data **stack, char c)
@@ -45,9 +45,9 @@ void	rrotate(t_data **stack, char c)
 	ft_lstadd_front(stack, tmp->next);
 	tmp->next = NULL;
 	if (c == 'a')
-		ft_putstr("rra\n");
+		printf("rra\n");
 	else
-		ft_putstr("rrb\n");
+		printf("rrb\n");
 }
 
 void	rr(t_data **a, t_data **b)
