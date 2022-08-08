@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:47:48 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/08 19:24:30 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/08 20:11:52 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,27 +86,65 @@ char	**ft_split(char *str, char c)
 	return (split);
 }
 
-void	sort_big(t_data **a, t_data **b, t_data *cheap, t_data *insert)
+// void	sort_big(t_data **a, t_data **b, t_data *cheap, t_data *insert)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < cheap->total)
+// 	{
+// 		while (cheap->pos != 1)
+// 		{
+// 			if (cheap->pos <= (ft_lstsize(*b) / 2))
+// 				rotate(b, 'b');
+// 			else
+// 				rrotate(b, 'b');
+// 			get_pos(b);
+// 			i++;
+// 		}
+// 		if (insert->pos != 1 && insert->pos <= ft_lstsize(*a) / 2)
+// 			rotate(a, 'a');
+// 		else if (insert->pos != 1)
+// 			rrotate(a, 'a');
+// 		get_pos(a);
+// 		i++;
+// 	}
+// }
+
+void	sort_big_a(t_data **a, t_data *cheap, t_data *insert)
 {
 	int	i;
+	int	pos;
+	int	size;
 
 	i = 0;
-	while (i < cheap->total)
+	size = ft_lstsize(*a);
+	pos = insert->pos;
+	while (i < cheap->cost_a - 1)
 	{
-		while (cheap->pos != 1)
-		{
-			if (cheap->pos <= (ft_lstsize(*b) / 2))
-				rotate(b, 'b');
-			else
-				rrotate(b, 'b');
-			get_pos(b);
-			i++;
-		}
-		if (insert->pos != 1 && insert->pos <= ft_lstsize(*a) / 2)
+		if (pos < size / 2)
 			rotate(a, 'a');
-		else if (insert->pos != 1)
+		else
 			rrotate(a, 'a');
-		get_pos(a);
+		i++;
+	}
+}
+
+void	sort_big_b(t_data **b, t_data *cheap)
+{
+	int	i;
+	int	pos;
+	int	size;
+
+	i = 0;
+	size = ft_lstsize(*b);
+	pos = cheap->pos;
+	while (i < cheap->cost_b)
+	{
+		if (pos < size / 2)
+			rotate(b, 'b');
+		else
+			rrotate(b, 'b');
 		i++;
 	}
 }

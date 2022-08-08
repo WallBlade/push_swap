@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/08 18:41:04 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/08 19:41:47 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	decide_cost(t_data **a, t_data *tmp_a, t_data *tmp_b);
 void	total_cost(t_data **b);
 t_data	*ft_init_stack(int argc, char **argv);
 t_data	*ft_catch_errors(int argc, char **params);
+void	sort_big_a(t_data **a, t_data *cheap, t_data *insert);
+void	sort_big_b(t_data **a, t_data *cheap);
 int		only_1(t_data **a);
 
 //------------------	UTILS2	 ------------------//
