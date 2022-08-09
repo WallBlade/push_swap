@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/08 19:41:47 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:05:15 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_data
 	int				pos;
 	int				lis;
 	int				is_lis;
-	int				cost_a;
-	int				cost_b;
+	int				cost;
+	int				abs;
 	int				total;
 	struct s_data	*next;
 }				t_data;
@@ -56,13 +56,15 @@ int		is_sorted(t_data **a);
 void	get_pos(t_data **a);
 char	**ft_freetab(char **s, int n);
 void	sort_big(t_data **a, t_data **b, t_data *cheap, t_data *insert);
-void	decide_cost(t_data **a, t_data *tmp_a, t_data *tmp_b);
+void	absolute_cost(t_data **a, t_data **b);
+int		decide_cost(int cost_a, int cost_b);
 void	total_cost(t_data **b);
 t_data	*ft_init_stack(int argc, char **argv);
 t_data	*ft_catch_errors(int argc, char **params);
 void	sort_big_a(t_data **a, t_data *cheap, t_data *insert);
 void	sort_big_b(t_data **a, t_data *cheap);
 int		only_1(t_data **a);
+void	set_cost(t_data **stack);
 
 //------------------	UTILS2	 ------------------//
 

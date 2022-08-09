@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:43:49 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/08 13:52:53 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:24:36 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,14 @@ t_data	*get_min_costa(t_data **a, t_data **b)
 	{
 		if ((tmp_a && tmp_a->next) && tmp_a->index < tmp_b->index
 			&& tmp_a->next->index > tmp_b->index)
-			return (tmp_a);
+			return (tmp_a->next);
 		else if (tmp_b->index < stack_min(a)->index)
 			return (stack_min(a));
 		else if (tmp_b->index > stack_max(a)->index)
-			return (stack_max(a));
-		else if (tmp_a->next == NULL)
 		{
-			if (tmp_a->index < tmp_b->index && (*a)->index > tmp_b->index)
-				return (*a);
+			if (stack_max(a)->next)
+				return (stack_max(a)->next);
+			return (*a);
 		}
 		tmp_a = tmp_a->next;
 	}
@@ -49,7 +48,7 @@ t_data	*search_best_cost(t_data **b)
 	cheap = *b;
 	while (tmp_b)
 	{
-		if (cheap->total > tmp_b->total)
+		if (cheap->abs > tmp_b->abs)
 			cheap = tmp_b;
 		tmp_b = tmp_b->next;
 	}
