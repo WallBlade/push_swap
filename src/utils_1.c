@@ -6,43 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:55:45 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/05 17:00:09 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:34:27 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-t_data	*stack_max(t_data **a)
-{
-	t_data	*max;
-	t_data	*tmp;
-
-	tmp = *a;
-	max = *a;
-	while (tmp)
-	{
-		if (tmp->num > max->num)
-			max = tmp;
-		tmp = tmp->next;
-	}
-	return (max);
-}
-
-t_data	*stack_min(t_data **a)
-{
-	t_data	*min;
-	t_data	*tmp;
-
-	tmp = *a;
-	min = *a;
-	while (tmp)
-	{
-		if (tmp->num < min->num)
-			min = tmp;
-		tmp = tmp->next;
-	}
-	return (min);
-}
 
 void	find_lis(t_data **a)
 {
@@ -110,5 +78,87 @@ void	mark_lis(t_data **a)
 		i++;
 		if (tmp == NULL)
 			tmp = *a;
+	}
+}
+
+int	only_1(t_data **a)
+{
+	t_data	*tmp;
+
+	tmp = *a;
+	while (tmp)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+	{
+		if (tmp->is_lis == 0)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+// void	push_nolis(t_data **a, t_data **b)
+// {
+// 	t_data	*tmp;
+// 	int		median;
+
+// 	tmp = *a;
+// 	median = ft_lstsize(*a) / 2;
+// 	printf("%d\n", tmp->index);
+// 	while (only_1(a))
+// 	{
+// 		if (tmp->is_lis == 0)
+// 		{
+// 			printf("num = %d\tpos = %d\tindex = %d\tis_lis = %d\n", tmp->num, tmp->pos, tmp->index, tmp->is_lis);
+// 			while (tmp->pos != 1)
+// 			{
+// 				if (tmp->pos <= (ft_lstsize(*a) / 2))
+// 					rotate(a, 'a');
+// 				else
+// 					rrotate(a, 'a');
+// 				get_pos(a);
+// 			}
+// 			push_b(a, b);
+// 			get_pos(a);
+// 			break;
+// 			if (tmp->index < median)
+// 				rotate(b, 'b');
+// 		}
+// 		get_pos(a);
+// 		tmp = tmp->next;
+// 		if (tmp == NULL)
+// 			tmp = *a;
+// 	}
+// }
+
+void	do_op(t_data **a, t_data *tmp)
+{
+	while (tmp->cost > 0)
+	{
+		rotate(a, 'a');
+		tmp->cost--;	
+	}
+	while (tmp->cost < 0)
+	{
+		rrotate(a, 'a');
+		tmp->cost++;
+	}
+}
+
+void	push_nolis(t_data **a, t_data **b)
+{
+	t_data	*tmp;
+
+	tmp = *a;
+	while (tmp)
+	{
+		if (tmp->is_lis == 0)
+		{
+			get_pos(a);
+			set_cost(tmp);
+			do_op(a, tmp);
+			push_b(a, b);
+			tmp = *a;
+		}
+		else
+			tmp = tmp->next;
 	}
 }

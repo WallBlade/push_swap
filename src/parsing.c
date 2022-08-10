@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:45:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/08 18:46:47 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:41:25 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	ft_treat_args(char **args, int i)
 		j = 0;
 		while (args[i][j])
 		{
-			if (!ft_isdigit(args[i][j]))
+			if (args[i][j] < '0' && args[i][j] > '9')
 				return (0);
-			if (args[i][j] == '-')
+			if (args[i][j] == '-' || args[i][j] == '+')
 				j++;
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/09 18:05:15 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:24:51 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_data	*ft_catch_errors(int argc, char **params);
 void	sort_big_a(t_data **a, t_data *cheap, t_data *insert);
 void	sort_big_b(t_data **a, t_data *cheap);
 int		only_1(t_data **a);
-void	set_cost(t_data **stack);
+void	set_cost(t_data *stack);
 
 //------------------	UTILS2	 ------------------//
 

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/09 17:36:12 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:31:30 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,17 +119,33 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	// printf("test\n\n");
-	// ft_print_data(&a);
+	ft_print_data(&a);
 	// ft_print_data(&b);
 	// printf("before lis\n");
+	// ft_print_data(&a);
+	// for (int i = 0; i < 8; i++)
+	// {
+	// 	push_nolis(&a, &b);
+	// 	ft_print_data(&a);
+	// }
+	// set_cost(a);
+	// ft_print_data(&a);
+	// for (int i = 0; i < 5; i++)
+	// {
+	// 	rotate(&a, 'a');
+	// 	get_pos(&a);
+	// 	set_cost(a);
+	// 	ft_print_data(&a);
+	// }
 	push_nolis(&a, &b);
-	printf("after lis\n");
-	get_pos(&b);
-	get_pos(&a);
-	set_cost(&a);
-	set_cost(&b);
-	absolute_cost(&a, &b);
+	// printf("after lis\n");
+	// get_pos(&b);
+	// get_pos(&a);
+	// set_cost(&a);
+	// set_cost(&b);
+	// absolute_cost(&a, &b);
 	ft_print_data(&a);
+	// ft_print_data(&a);
 	ft_print_data(&b);
 	// calculate_cost_b(&b);
 	// add_cost_a(&a, &b);
@@ -146,3 +162,4 @@ int	main(int argc, char **argv)
 	ft_free_stack(&a);
 	return (0);
 }
+

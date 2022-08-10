@@ -6,24 +6,42 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:00:01 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/08 12:34:39 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:42:02 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	only_1(t_data **a)
+t_data	*stack_max(t_data **a)
 {
+	t_data	*max;
 	t_data	*tmp;
 
 	tmp = *a;
+	max = *a;
 	while (tmp)
 	{
-		if (tmp->is_lis == 0)
-			return (1);
+		if (tmp->num > max->num)
+			max = tmp;
 		tmp = tmp->next;
 	}
-	return (0);
+	return (max);
+}
+
+t_data	*stack_min(t_data **a)
+{
+	t_data	*min;
+	t_data	*tmp;
+
+	tmp = *a;
+	min = *a;
+	while (tmp)
+	{
+		if (tmp->num < min->num)
+			min = tmp;
+		tmp = tmp->next;
+	}
+	return (min);
 }
 
 int	is_sorted(t_data **a)
@@ -51,13 +69,6 @@ int	ft_strcmp(char *s1, char *s2)
 			return (s1[i] - s2[i]);
 		i++;
 	}
-	return (0);
-}
-
-int	ft_isdigit(char c)
-{
-	if ((c >= '0' && c <= '9') || (c == '-' || c == '+'))
-		return (1);
 	return (0);
 }
 
