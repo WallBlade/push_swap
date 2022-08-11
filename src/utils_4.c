@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:02:05 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/01 21:56:00 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/11 17:26:57 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,16 @@ void	index_stack(t_data **a)
 	}
 }
 
-void	get_pos(t_data **a)
+void	get_pos(t_data *a)
 {
-	int		pos;
-	t_data	*tmp;
+	int	i;
 
-	pos = 1;
-	tmp = *a;
-	while (tmp)
+	i = 0;
+	while (a)
 	{
-		tmp->pos = pos++;
-		tmp = tmp->next;
+		a->pos = i;
+		i++;
+		a = a->next;
 	}
 }
 

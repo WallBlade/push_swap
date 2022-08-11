@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/10 18:24:51 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/11 19:21:31 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,13 @@ void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_print_error(void);
 void	index_stack(t_data **a);
-int		is_sorted(t_data **a);
-void	get_pos(t_data **a);
+int		is_sorted(t_data *a);
+void	get_pos(t_data *a);
 char	**ft_freetab(char **s, int n);
-void	sort_big(t_data **a, t_data **b, t_data *cheap, t_data *insert);
 void	absolute_cost(t_data **a, t_data **b);
 int		decide_cost(int cost_a, int cost_b);
-void	total_cost(t_data **b);
 t_data	*ft_init_stack(int argc, char **argv);
 t_data	*ft_catch_errors(int argc, char **params);
-void	sort_big_a(t_data **a, t_data *cheap, t_data *insert);
-void	sort_big_b(t_data **a, t_data *cheap);
 int		only_1(t_data **a);
 void	set_cost(t_data *stack);
 
@@ -71,7 +67,7 @@ void	set_cost(t_data *stack);
 t_data	*stack_min(t_data **a);
 t_data	*stack_max(t_data **a);
 t_data	*lis_max(t_data **a);
-void	find_lis(t_data **a);
+void	find_lis(t_data *a);
 void	mark_lis(t_data **a);
 
 //------------------	UTILS3	 ------------------//

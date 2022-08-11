@@ -6,29 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:57:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/10 18:28:28 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/11 17:20:53 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-// void	set_cost(t_data **stack)
-// {
-// 	t_data *tmp;
-// 	int		size;
-
-// 	tmp = *stack;
-// 	size = ft_lstsize(*stack);
-// 	while (tmp)
-// 	{
-// 		if (tmp->pos <= size / 2 + 1)
-// 			tmp->cost = tmp->pos - 1;
-// 		else
-// 			tmp->cost = (size - tmp->pos + 1) * - 1;
-// 		tmp = tmp->next;
-// 	}
-// }
-
 
 void	set_cost(t_data *stack)
 {
@@ -37,10 +19,10 @@ void	set_cost(t_data *stack)
 	size = ft_lstsize(stack);
 	while (stack)
 	{
-		if (stack->pos <= size / 2 + 1)
-			stack->cost = stack->pos - 1;
+		if (stack->pos <= size / 2)
+			stack->cost = stack->pos;
 		else
-			stack->cost = (size - stack->pos + 1) * - 1;
+			stack->cost = stack->pos - size;
 		stack = stack->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:47:48 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/09 16:20:58 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/11 16:53:44 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,66 +85,3 @@ char	**ft_split(char *str, char c)
 	split[j] = 0;
 	return (split);
 }
-
-// void	sort_big(t_data **a, t_data **b, t_data *cheap, t_data *insert)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < cheap->total)
-// 	{
-// 		while (cheap->pos !=.)
-// 		{
-// 			if (cheap->pos <= (ft_lstsize(*b) / 2))
-// 				rotate(b, 'b');
-// 			else
-// 				rrotate(b, 'b');
-// 			get_pos(b);
-// 			i++;
-// 		}
-// 		if (insert->pos != 1 && insert->pos <= ft_lstsize(*a) / 2)
-// 			rotate(a, 'a');
-// 		else if (insert->pos != 1)
-// 			rrotate(a, 'a');
-// 		get_pos(a);
-// 		i++;
-// 	}
-// }
-
-// void	sort_big_a(t_data **a, t_data *cheap, t_data *insert)
-// {
-// 	int	i;
-// 	int	pos;
-// 	int	size;
-
-// 	i = 0;
-// 	size = ft_lstsize(*a);
-// 	pos = insert->pos;
-// 	while (i < cheap->cost_a - 1)
-// 	{
-// 		if (pos < size / 2)
-// 			rotate(a, 'a');
-// 		else
-// 			rrotate(a, 'a');
-// 		i++;
-// 	}
-// }
-
-// void	sort_big_b(t_data **b, t_data *cheap)
-// {
-// 	int	i;
-// 	int	pos;
-// 	int	size;
-
-// 	i = 0;
-// 	size = ft_lstsize(*b);
-// 	pos = cheap->pos;
-// 	while (i < cheap->cost_b)
-// 	{
-// 		if (pos < size / 2)
-// 			rotate(b, 'b');
-// 		else
-// 			rrotate(b, 'b');
-// 		i++;
-// 	}
-// }

@@ -1,0 +1,164 @@
+// void	sort_big(t_data **a, t_data **b, t_data *cheap, t_data *insert)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < cheap->total)
+// 	{
+// 		while (cheap->pos !=.)
+// 		{
+// 			if (cheap->pos <= (ft_lstsize(*b) / 2))
+// 				rotate(b, 'b');
+// 			else
+// 				rrotate(b, 'b');
+// 			get_pos(b);
+// 			i++;
+// 		}
+// 		if (insert->pos != 1 && insert->pos <= ft_lstsize(*a) / 2)
+// 			rotate(a, 'a');
+// 		else if (insert->pos != 1)
+// 			rrotate(a, 'a');
+// 		get_pos(a);
+// 		i++;
+// 	}
+// }
+
+// void	sort_big_a(t_data **a, t_data *cheap, t_data *insert)
+// {
+// 	int	i;
+// 	int	pos;
+// 	int	size;
+
+// 	i = 0;
+// 	size = ft_lstsize(*a);
+// 	pos = insert->pos;
+// 	while (i < cheap->cost_a - 1)
+// 	{
+// 		if (pos < size / 2)
+// 			rotate(a, 'a');
+// 		else
+// 			rrotate(a, 'a');
+// 		i++;
+// 	}
+// }
+
+// void	sort_big_b(t_data **b, t_data *cheap)
+// {
+// 	int	i;
+// 	int	pos;
+// 	int	size;
+
+// 	i = 0;
+// 	size = ft_lstsize(*b);
+// 	pos = cheap->pos;
+// 	while (i < cheap->cost_b)
+// 	{
+// 		if (pos < size / 2)
+// 			rotate(b, 'b');
+// 		else
+// 			rrotate(b, 'b');
+// 		i++;
+// 	}
+// }
+
+// void	trier_la_plebe(t_data **a, t_data **b)
+// {
+// 	t_data	*cheap;
+// 	t_data	*insert;
+
+// 	if (!*b)
+// 		return ;
+// 	calculate_cost_b(b);
+// 	add_cost_a(a, b);
+// 	total_cost(b);
+// 	cheap = search_best_cost(b);
+// 	printf("cheapest = %d\n", cheap->index);
+// 	insert = get_min_costa(a, &cheap);
+// 	printf("insert = %d\n", insert->index);
+// 	// sort_big(a, b, cheap, insert);
+// 	sort_big_a(a, cheap, insert);
+// 	ft_print_data(a);
+// 	sort_big_b(b, cheap);
+// 	ft_print_data(b);
+// 	if (cheap->num > (*a)->num)
+// 		rotate(a, 'a');
+// 	push_a(a, b);
+// 	get_pos(a);
+// 	get_pos(b);
+// 	if (*b)
+// 		trier_la_plebe(a, b);
+// }
+
+// void	ft_final_finish_him_sort(t_data **a, t_data **b)
+// {
+// 	t_data	*tmp_a;
+// 	int		pos;
+
+// 	trier_la_plebe(a, b);
+// 	tmp_a = stack_min(a);
+// 	pos = tmp_a->pos;
+// 	int size = ft_lstsize(*a);
+// 	while (tmp_a->pos != 1 && tmp_a->pos <= size)
+// 	{
+// 		if (pos < size / 2)
+// 		{
+// 			rotate(a, 'a');
+// 			tmp_a->pos--;
+// 		}
+// 		else
+// 		{
+// 			rrotate(a, 'a');
+// 			tmp_a->pos++;
+// 		}
+// 	}
+// }
+
+// void	push_nolis(t_data **a, t_data **b)
+// {
+// 	t_data	*tmp;
+// 	int		median;
+
+// 	tmp = *a;
+// 	median = ft_lstsize(*a) / 2;
+// 	printf("%d\n", tmp->index);
+// 	while (only_1(a))
+// 	{
+// 		if (tmp->is_lis == 0)
+// 		{
+// 			printf("num = %d\tpos = %d\tindex = %d\tis_lis = %d\n", tmp->num, tmp->pos, tmp->index, tmp->is_lis);
+// 			while (tmp->pos != 1)
+// 			{
+// 				if (tmp->pos <= (ft_lstsize(*a) / 2))
+// 					rotate(a, 'a');
+// 				else
+// 					rrotate(a, 'a');
+// 				get_pos(a);
+// 			}
+// 			push_b(a, b);
+// 			get_pos(a);
+// 			break;
+// 			if (tmp->index < median)
+// 				rotate(b, 'b');
+// 		}
+// 		get_pos(a);
+// 		tmp = tmp->next;
+// 		if (tmp == NULL)
+// 			tmp = *a;
+// 	}
+// }
+
+int	only_1(t_data **a)
+{
+	t_data	*tmp;
+
+	tmp = *a;
+	while (tmp)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+	{
+		if (tmp->is_lis == 0)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/

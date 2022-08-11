@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:00:01 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/10 14:42:02 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/11 16:58:53 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,13 @@ t_data	*stack_min(t_data **a)
 	return (min);
 }
 
-int	is_sorted(t_data **a)
+int	is_sorted(t_data *a)
 {
-	t_data	*tmp;
-
-	tmp = *a;
-	while (tmp)
+	while (a)
 	{
-		if (tmp->pos != (tmp->index + 1))
+		if (a->index > a->next->index)
 			return (0);
-		tmp = tmp->next;
+		a = a->next;
 	}
 	return (1);
 }
