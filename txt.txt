@@ -161,4 +161,14 @@ int	only_1(t_data **a)
 	return (0);
 }
 
+	get_pos(a);
+	get_pos(b);
+	set_cost(a);
+	set_cost(b);
+	absolute_cost(&a, &b);
+	t_data *cheap = search_best_cost(b);
+	ft_print_data(&a);
+	ft_print_data(&b);
+	printf("cheapest = %d\n", cheap->index);
+
 https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/
