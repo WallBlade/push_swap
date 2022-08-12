@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/12 12:27:53 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/12 14:56:22 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	set_cost(t_data *stack);
 
 t_data	*stack_min(t_data **a);
 t_data	*stack_max(t_data **a);
-t_data	*lis_max(t_data **a);
+t_data	*lis_max(t_data *a);
 void	find_lis(t_data *a);
-void	mark_lis(t_data **a);
+void	mark_lis(t_data *a);
 
 //------------------	UTILS3	 ------------------//
 

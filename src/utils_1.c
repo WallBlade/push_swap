@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:55:45 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/12 12:01:30 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:01:31 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,21 @@ void	find_lis(t_data *a)
 	}
 }
 
-t_data	*lis_max(t_data **a)
+t_data	*lis_max(t_data *a)
 {
-	t_data	*tmp;
 	t_data	*max;
 
-	tmp = *a;
-	max = *a;
-	while (tmp)
+	max = a;
+	while (a)
 	{
-		if (tmp->lis > max->lis)
-			max = tmp;
-		tmp = tmp->next;
+		if (a->lis > max->lis)
+			max = a;
+		a = a->next;
 	}
 	return (max);
 }
 
-void	mark_lis(t_data **a)
+void	mark_lis(t_data *a)
 {
 	t_data	*tmp;
 	int		comp;
@@ -67,7 +65,7 @@ void	mark_lis(t_data **a)
 	tmp = lis_max(a);
 	tmp->is_lis = 1;
 	comp = tmp->num;
-	while (i < ft_lstsize(*a))
+	while (i < ft_lstsize(a))
 	{
 		if (comp < tmp->num)
 		{
@@ -77,7 +75,7 @@ void	mark_lis(t_data **a)
 		tmp = tmp->next;
 		i++;
 		if (tmp == NULL)
-			tmp = *a;
+			tmp = a;
 	}
 }
 

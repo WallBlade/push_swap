@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/12 12:39:09 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/12 15:04:06 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ int	main(int argc, char **argv)
 	if (ft_lstsize(a) >= 2 && ft_lstsize(a) <= 5)
 		return (sort_five(&a, &b), 0);
 	push_nolis(&a, &b);
+	get_pos
 	set_cost(b);
+	absolute_cost(&a, &b);
 	t_data *cheap = search_best_cost(b);
 	ft_print_data(&a);
 	ft_print_data(&b);
