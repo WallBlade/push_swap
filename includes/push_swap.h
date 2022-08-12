@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/11 19:21:31 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/12 12:27:53 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	push_nolis(t_data **a, t_data **b);
 void	calculate_cost_b(t_data **b);
 void	add_cost_a(t_data **a, t_data **b);
 t_data	*get_min_costa(t_data **a, t_data **b);
-t_data	*search_best_cost(t_data **b);
+t_data	*search_best_cost(t_data *b);
 
 //------------------	UTILS4	 ------------------//
 

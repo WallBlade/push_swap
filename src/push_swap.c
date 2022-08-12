@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/11 17:53:52 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/12 12:39:09 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,20 +62,13 @@ int	main(int argc, char **argv)
 	if (is_sorted(a))
 		return (ft_free_stack(&a), 0);
 	if (ft_lstsize(a) >= 2 && ft_lstsize(a) <= 5)
-	{
-		sort_five(&a, &b);
-		return (0);
-	}
-	// printf("test\n\n");
+		return (sort_five(&a, &b), 0);
 	push_nolis(&a, &b);
-	printf("STACK A\n");
+	set_cost(b);
+	t_data *cheap = search_best_cost(b);
 	ft_print_data(&a);
-	printf("\n\n");
-	printf("STACK B\n");
 	ft_print_data(&b);
-	printf("\n\n");
-	// printf("is_sorted = %d\n", is_sorted(&a));
+	printf("cheapest = %d\n", cheap->index);
 	ft_free_stack(&a);
 	return (0);
 }
-
