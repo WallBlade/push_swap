@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:57:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/14 19:41:08 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/15 00:33:44 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_data	*get_min_costa(t_data *a, t_data *b)
 			&& a->next->index > b->index)
 			return (a->next);
 		else if (b->index < stack_min(a)->index)
-				return (stack_min(a));
+			return (stack_min(a));
 		else if (b->index > stack_max(a)->index)
 		{
 			if (stack_max(a)->next)
