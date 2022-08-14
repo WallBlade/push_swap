@@ -6,43 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:00:01 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/12 12:14:35 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/14 18:27:05 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-t_data	*stack_max(t_data **a)
-{
-	t_data	*max;
-	t_data	*tmp;
-
-	tmp = *a;
-	max = *a;
-	while (tmp)
-	{
-		if (tmp->num > max->num)
-			max = tmp;
-		tmp = tmp->next;
-	}
-	return (max);
-}
-
-t_data	*stack_min(t_data **a)
-{
-	t_data	*min;
-	t_data	*tmp;
-
-	tmp = *a;
-	min = *a;
-	while (tmp)
-	{
-		if (tmp->num < min->num)
-			min = tmp;
-		tmp = tmp->next;
-	}
-	return (min);
-}
 
 int	is_sorted(t_data *a)
 {
@@ -73,4 +41,43 @@ void	ft_print_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+
+long	ft_atoi(char *str)
+{
+	int		i;
+	long	res;
+	int		sign;
+
+	i = 0;
+	sign = 1;
+	res = 0;
+	while ((str[i] > 9 && str[i] < 13) || (str[i] == ' '))
+		i++;
+	while (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9' && i < 12)
+	{
+		res = res * 10 + (str[i] - 48);
+		i++;
+	}
+	if (res * sign < -2147483648 || res * sign > 2147483647)
+		ft_print_error();
+	return (res * sign);
 }

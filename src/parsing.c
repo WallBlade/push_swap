@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:45:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/12 14:54:59 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/14 19:19:39 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ t_data	*ft_catch_errors(int argc, char **params)
 	return (a);
 }
 
-
 t_data	*ft_init_stack(int argc, char **argv)
 {
 	t_data	*a;
@@ -97,7 +96,7 @@ t_data	*ft_init_stack(int argc, char **argv)
 	params = argv;
 	a = ft_catch_errors(argc, params);
 	get_pos(a);
-	index_stack(&a);
+	index_stack(a);
 	if (ft_lstsize(a) > 5)
 	{
 		find_lis(a);
