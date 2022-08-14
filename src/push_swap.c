@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/14 19:24:49 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/15 00:06:53 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	sort_big_stack(t_data **a, t_data **b)
 	absolute_cost(*a, *b);
 	cheap = search_best_cost(*b);
 	insert = get_min_costa(*a, cheap);
-	printf("cheapest : %d\n", cheap->index);
-	printf("insert : %d\n", insert->index);
-	// if (*b)
-	// 	sort_big_stack(a, b);
+	exec(a, b, insert->cost, cheap->cost);
+	push_a(a, b);
+	if (*b)
+		sort_big_stack(a, b);
 }
 
 int	main(int argc, char **argv)
@@ -83,8 +83,7 @@ int	main(int argc, char **argv)
 		return (sort_five(&a, &b), 0);
 	push_nolis(&a, &b);
 	sort_big_stack(&a, &b);
-	ft_print_data(&a);
-	ft_print_data(&b);
+	finish_him(&a);
 	ft_free_stack(&a);
 	return (0);
 }

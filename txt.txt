@@ -172,3 +172,5 @@ int	only_1(t_data **a)
 	printf("cheapest = %d\n", cheap->index);
 
 https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/
+
+printf("is_sorted = %d\n", is_sorted(a));

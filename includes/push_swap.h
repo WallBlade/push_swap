@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/14 19:46:15 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/15 00:00:17 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,13 @@ void	index_stack(t_data *a);
 void	get_pos(t_data *a);
 void	ft_free_stack(t_data **stack);
 
+//------------------	UTILS5	 ------------------//
+
+void	rr(t_data **a, t_data **b);
+void	rrr(t_data **a, t_data **b);
+void	finish_him(t_data **a);
+int		ft_isdigit(char c);
+
 //------------------	 LISTS	  ------------------//
 
 t_data	*ft_lstnew(int nb);
@@ -86,6 +93,14 @@ t_data	*ft_get_args(int argc, char **params, int i, t_data *a);
 t_data	*ft_catch_errors(int argc, char **params);
 t_data	*ft_init_stack(int argc, char **argv);
 
+//------------------	   ALGO	    ------------------//
+
+void	do_rotate(t_data **stack, int *cost, char c);
+void	do_reverse(t_data **stack, int *cost, char c);
+void	do_rr(t_data **a, t_data **b, int *cost_a, int *cost_b);
+void	do_rrr(t_data **a, t_data **b, int *cost_a, int *cost_b);
+void	exec(t_data **a, t_data **b, int cost_a, int cost_b);
+
 //------------------	OPERATIONS	 ------------------//
 
 void	swap(t_data **stack, char c);
@@ -93,8 +108,8 @@ void	push_a(t_data **a, t_data **b);
 void	push_b(t_data **a, t_data **b);
 void	rotate(t_data **stack, char c);
 void	rrotate(t_data **stack, char c);
-void	rr(t_data **a, t_data **b);
-void	rrr(t_data **a, t_data **b);
+void	rotate_double(t_data **stack);
+void	rrotate_double(t_data **stack);
 
 //--------------------	   PRINT	 --------------------//
 

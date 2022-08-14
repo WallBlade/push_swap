@@ -1,6 +1,6 @@
 SRC		=	src/op_push_swap.c src/op_rotate_reverse.c src/push_swap.c src/print.c \
 			src/ft_split.c src/lists.c src/parsing.c src/utils_1.c src/utils_2.c \
-			src/utils_3.c src/utils_4.c \
+			src/utils_3.c src/utils_4.c src/utils_5.c src/algo.c\
 
 OBJ		= $(SRC:.c=.o)
 

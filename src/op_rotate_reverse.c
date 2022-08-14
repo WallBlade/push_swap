@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:03:29 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/08 14:42:57 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/15 00:05:39 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	rotate(t_data **stack, char c)
 	ft_lstadd_back(stack, tmp);
 	tmp->next = NULL;
 	if (c == 'a')
-		printf("ra\n");
+		ft_putstr("ra\n");
 	else
-		printf("rb\n");
+		ft_putstr("rb\n");
 }
 
 void	rrotate(t_data **stack, char c)
@@ -45,19 +45,37 @@ void	rrotate(t_data **stack, char c)
 	ft_lstadd_front(stack, tmp->next);
 	tmp->next = NULL;
 	if (c == 'a')
-		printf("rra\n");
+		ft_putstr("rra\n");
 	else
-		printf("rrb\n");
+		ft_putstr("rrb\n");
 }
 
-void	rr(t_data **a, t_data **b)
+void	rotate_double(t_data **stack)
 {
-	rotate(a, 'a');
-	rotate(b, 'b');
+	t_data	*tmp;
+
+	if (!*stack || ft_lstsize(*stack) < 2)
+		return ;
+	tmp = *stack;
+	*stack = (*stack)->next;
+	ft_lstadd_back(stack, tmp);
+	tmp->next = NULL;
 }
 
-void	rrr(t_data **a, t_data **b)
+void	rrotate_double(t_data **stack)
 {
-	rrotate(a, 'a');
-	rrotate(b, 'b');
+	t_data	*tmp;
+
+	if (!*stack || ft_lstsize(*stack) < 2)
+		return ;
+	tmp = *stack;
+	while (tmp->next)
+	{
+		if (tmp->next->next)
+			tmp = tmp->next;
+		else
+			break ;
+	}
+	ft_lstadd_front(stack, tmp->next);
+	tmp->next = NULL;
 }
