@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:45:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 00:00:44 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/15 16:58:43 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,16 @@ int	ft_check_doubles(char **args, int i)
 
 int	ft_treat_args(char **args, int i)
 {
-	int	j;
-
 	if (!ft_check_doubles(args, i))
 		return (0);
 	while (args[i])
 	{
-		j = 0;
-		while (args[i][j])
+		while (args[i])
 		{
-			if (!ft_isdigit(args[i][j]))
+			if (!ft_isdigit(args[i]))
 				return (0);
-			if (args[i][j] == '-' || args[i][j] == '+')
-				j++;
-			j++;
+			i++;
 		}
-		i++;
 	}
 	return (1);
 }
@@ -75,8 +69,12 @@ t_data	*ft_catch_errors(int argc, char **params)
 
 	i = 1;
 	a = NULL;
-	if (argc == 2 && ft_countwords(params[1], ' ') < 2)
+	if ((argc == 2 && ft_countwords(params[1], ' ') < 2) || (argc < 2))
+	{
+		if (!ft_isdigit(params[1]))
+			ft_print_error();
 		exit (EXIT_FAILURE);
+	}
 	if (argc == 2)
 	{
 		params = ft_split(params[1], ' ');

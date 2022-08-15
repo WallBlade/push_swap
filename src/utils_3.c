@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:00:01 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/14 18:27:05 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/15 18:38:33 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ long	ft_atoi(char *str)
 	i = 0;
 	sign = 1;
 	res = 0;
-	while ((str[i] > 9 && str[i] < 13) || (str[i] == ' '))
-		i++;
-	while (str[i] == '+' || str[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			sign *= -1;
 		i++;
 	}
+	while ((str[i] > 9 && str[i] < 13) || (str[i] == ' '))
+		i++;
 	while (str[i] >= '0' && str[i] <= '9' && i < 12)
 	{
 		res = res * 10 + (str[i] - 48);

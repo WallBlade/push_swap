@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 00:00:17 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/15 16:57:28 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_free_stack(t_data **stack);
 void	rr(t_data **a, t_data **b);
 void	rrr(t_data **a, t_data **b);
 void	finish_him(t_data **a);
-int		ft_isdigit(char c);
+int		ft_isdigit(char *str);
 
 //------------------	 LISTS	  ------------------//
 

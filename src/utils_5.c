@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 23:33:38 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/14 23:59:59 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/15 18:39:16 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,18 @@ void	finish_him(t_data **a)
 	do_op(a, min);
 }
 
-int	ft_isdigit(char c)
+int	ft_isdigit(char *str)
 {
-	if ((c >= '0' && c <= '9') || (c == '-' || c == '+'))
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
+		i++;
+	}
+	return (1);
 }

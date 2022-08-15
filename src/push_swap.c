@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 00:19:06 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/15 18:55:24 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,20 @@ void	sort_big_stack(t_data **a, t_data **b)
 	t_data	*cheap;
 	t_data	*insert;
 
-	get_pos(*a);
-	get_pos(*b);
-	set_cost(*a);
-	set_cost(*b);
-	absolute_cost(*a, *b);
-	cheap = search_best_cost(*b);
-	insert = get_min_costa(*a, cheap);
-	exec(a, b, insert->cost, cheap->cost);
-	push_a(a, b);
-	if (*b)
-		sort_big_stack(a, b);
+	if (!*b)
+		return ;
+	while (*b)
+	{
+		get_pos(*a);
+		get_pos(*b);
+		set_cost(*a);
+		set_cost(*b);
+		absolute_cost(*a, *b);
+		cheap = search_best_cost(*b);
+		insert = get_min_costa(*a, cheap);
+		exec(a, b, insert->cost, cheap->cost);
+		push_a(a, b);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -80,7 +83,10 @@ int	main(int argc, char **argv)
 	if (is_sorted(a))
 		return (ft_free_stack(&a), 0);
 	if (ft_lstsize(a) >= 2 && ft_lstsize(a) <= 5)
-		return (sort_five(&a, &b), 0);
+	{
+		sort_five(&a, &b);
+		return (ft_free_stack(&a), 0);
+	}
 	push_nolis(&a, &b);
 	sort_big_stack(&a, &b);
 	finish_him(&a);
