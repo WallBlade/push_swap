@@ -5,79 +5,68 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 13:00:01 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 18:38:33 by zel-kass         ###   ########.fr       */
+/*   Created: 2022/08/14 23:33:38 by zel-kass          #+#    #+#             */
+/*   Updated: 2022/08/18 19:11:19 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	is_sorted(t_data *a)
+void	rr(t_data **a, t_data **b)
 {
-	while (a->next)
-	{
-		if (a->index > a->next->index)
-			return (0);
-		a = a->next;
-	}
-	return (1);
+	rotate_double(a);
+	rotate_double(b);
+	ft_putstr("rr\n");
 }
 
-int	ft_strcmp(char *s1, char *s2)
+void	rrr(t_data **a, t_data **b)
 {
-	int	i;
-
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
+	rrotate_double(a);
+	rrotate_double(b);
+	ft_putstr("rrr\n");
 }
 
-void	ft_print_error(void)
+void	finish_him(t_data **a)
 {
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
+	t_data	*min;
+
+	min = stack_min(*a);
+	get_pos(*a);
+	set_cost(*a);
+	do_op(a, min);
 }
 
-void	ft_putstr(char *str)
+int	ft_isdigit(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		write(1, &str[i], 1);
+		if (str[i] == '-')
+			i++;
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
 		i++;
 	}
+	return (1);
 }
 
-long	ft_atoi(char *str)
+int	check_atol(t_data *a)
 {
-	int		i;
-	long	res;
-	int		sign;
+	t_data	*tmp;
 
-	i = 0;
-	sign = 1;
-	res = 0;
-	if (str[i] == '+' || str[i] == '-')
+	tmp = a;
+	while (a)
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		tmp = a->next;
+		while (tmp)
+		{
+			if (a->num == tmp->num)
+				return (0);
+			tmp = tmp->next;
+		}
+		a = a->next;
 	}
-	while ((str[i] > 9 && str[i] < 13) || (str[i] == ' '))
-		i++;
-	while (str[i] >= '0' && str[i] <= '9' && i < 12)
-	{
-		res = res * 10 + (str[i] - 48);
-		i++;
-	}
-	if (res * sign < -2147483648 || res * sign > 2147483647)
-		ft_print_error();
-	return (res * sign);
+	return (1);
 }

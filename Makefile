@@ -1,12 +1,12 @@
-SRC		=	src/op_push_swap.c src/op_rotate_reverse.c src/push_swap.c src/print.c \
+SRC		=	src/op_push_swap.c src/op_rotate_reverse.c src/push_swap.c src/algo.c\
 			src/ft_split.c src/lists.c src/parsing.c src/utils_1.c src/utils_2.c \
-			src/utils_3.c src/utils_4.c src/utils_5.c src/algo.c\
+			src/utils_3.c src/lis.c src/cost.c src/print.c \
 
 OBJ		= $(SRC:.c=.o)
 
-CC		=		gcc
+CC		=		cc
 RM		=		rm -rf
-CFLAGS	=		-Wall -Werror -Wextra -g3
+CFLAGS	=		-Wall -Werror -Wextra
 
 NAME	=		push_swap
 

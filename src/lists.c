@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:41:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/11 16:54:37 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/18 18:35:03 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_data	*ft_lstnew(int nb)
 	stack->pos = 0;
 	stack->lis = 0;
 	stack->is_lis = 0;
-	stack->cost = -1;
+	stack->cost = 0;
 	stack->next = NULL;
 	return (stack);
 }

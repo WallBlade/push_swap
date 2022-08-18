@@ -5,99 +5,87 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 12:57:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 00:33:44 by zel-kass         ###   ########.fr       */
+/*   Created: 2022/08/01 13:02:05 by zel-kass          #+#    #+#             */
+/*   Updated: 2022/08/18 19:38:03 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	set_cost(t_data *stack)
+t_data	*stack_max(t_data *a)
 {
-	int		size;
+	t_data	*max;
 
-	size = ft_lstsize(stack);
-	while (stack)
-	{
-		if (stack->pos <= size / 2)
-			stack->cost = stack->pos;
-		else
-			stack->cost = stack->pos - size;
-		stack = stack->next;
-	}
-}
-
-t_data	*get_min_costa(t_data *a, t_data *b)
-{
-	if (a->index > b->index && ft_lstlast(a)->index < b->index)
-		return (a);
+	max = a;
 	while (a)
 	{
-		if ((a && a->next) && a->index < b->index
-			&& a->next->index > b->index)
-			return (a->next);
-		else if (b->index < stack_min(a)->index)
-			return (stack_min(a));
-		else if (b->index > stack_max(a)->index)
-		{
-			if (stack_max(a)->next)
-				return (stack_max(a)->next);
-			return (a);
-		}
+		if (a->num > max->num)
+			max = a;
 		a = a->next;
 	}
-	return (NULL);
+	return (max);
 }
 
-int	decide_cost(int cost_a, int cost_b)
+t_data	*stack_min(t_data *a)
 {
-	if (cost_a >= 0 && cost_b >= 0)
+	t_data	*min;
+
+	min = a;
+	while (a)
 	{
-		if (cost_a > cost_b)
-			return (cost_a);
-		else
-			return (cost_b);
+		if (a->num < min->num)
+			min = a;
+		a = a->next;
 	}
-	else if (cost_a < 0 && cost_b < 0)
-	{
-		if (cost_a < cost_b)
-			return (cost_a * -1);
-		else
-			return (cost_b * -1);
-	}
-	else if ((cost_a >= 0 && cost_b <= 0) || (cost_a <= 0 && cost_b >= 0))
-	{
-		if (cost_a < 0)
-			cost_a *= -1;
-		else if (cost_b < 0)
-			cost_b *= -1;
-		return (cost_a + cost_b);
-	}
-	return (0);
+	return (min);
 }
 
-void	absolute_cost(t_data *a, t_data *b)
+void	index_stack(t_data *a)
 {
-	t_data	*insert;
+	int		i;
+	t_data	*tmp;
+	t_data	*tmp2;
 
-	while (b)
+	tmp = a;
+	while (tmp)
 	{
-		insert = get_min_costa(a, b);
-		b->abs = decide_cost(insert->cost, b->cost);
-		b = b->next;
+		i = 0;
+		tmp2 = a;
+		while (tmp2)
+		{
+			if (tmp->num > tmp2->num)
+				i++;
+			tmp2 = tmp2->next;
+		}
+		tmp->index = i;
+		tmp = tmp->next;
 	}
 }
 
-t_data	*search_best_cost(t_data *b)
+void	get_pos(t_data *a)
 {
-	t_data	*cheap;
+	int	i;
 
-	cheap = b;
-	while (b)
+	i = 0;
+	while (a)
 	{
-		if (cheap->abs > b->abs)
-			cheap = b;
-		b = b->next;
+		a->pos = i;
+		i++;
+		a = a->next;
 	}
-	return (cheap);
+}
+
+void	ft_free_stack(t_data **stack)
+{
+	int		len;
+	t_data	*tmp;
+
+	len = ft_lstsize(*stack);
+	while (len > 0)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		(*stack) = tmp;
+		len--;
+	}
 }

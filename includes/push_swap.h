@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 16:57:28 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/18 19:03:02 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_data
 	struct s_data	*next;
 }				t_data;
 
-//------------------	UTILS1	 ------------------//
+//------------------	  LIS	   ------------------//
 
 void	find_lis(t_data *a);
 t_data	*lis_max(t_data *a);
@@ -39,7 +39,7 @@ void	mark_lis(t_data *a);
 void	do_op(t_data **a, t_data *tmp);
 void	push_nolis(t_data **a, t_data **b);
 
-//------------------	UTILS2	 ------------------//
+//------------------	 COST	  ------------------//
 
 void	set_cost(t_data *stack);
 t_data	*get_min_costa(t_data *a, t_data *b);
@@ -47,15 +47,15 @@ int		decide_cost(int cost_a, int cost_b);
 void	absolute_cost(t_data *a, t_data *b);
 t_data	*search_best_cost(t_data *b);
 
-//------------------	UTILS3	 ------------------//
+//------------------	UTILS1	 ------------------//
 
 int		is_sorted(t_data *a);
 int		ft_strcmp(char *s1, char *s2);
-void	ft_print_error(void);
+void	ft_print_error(t_data **stack);
 void	ft_putstr(char *str);
-long	ft_atoi(char *str);
+long	ft_atol(t_data **a, char *str);
 
-//------------------	UTILS4	 ------------------//
+//------------------	UTILS2	 ------------------//
 
 t_data	*stack_max(t_data *a);
 t_data	*stack_min(t_data *a);
@@ -63,12 +63,13 @@ void	index_stack(t_data *a);
 void	get_pos(t_data *a);
 void	ft_free_stack(t_data **stack);
 
-//------------------	UTILS5	 ------------------//
+//------------------	UTILS3	 ------------------//
 
 void	rr(t_data **a, t_data **b);
 void	rrr(t_data **a, t_data **b);
 void	finish_him(t_data **a);
 int		ft_isdigit(char *str);
+int		check_atol(t_data *a);
 
 //------------------	 LISTS	  ------------------//
 
@@ -89,9 +90,8 @@ char	**ft_split(char *str, char c);
 
 int		ft_check_doubles(char **args, int i);
 int		ft_treat_args(char **args, int i);
-t_data	*ft_get_args(int argc, char **params, int i, t_data *a);
-t_data	*ft_catch_errors(int argc, char **params);
-t_data	*ft_init_stack(int argc, char **argv);
+void	ft_get_args(char **argv, t_data **a);
+t_data	*ft_init_stack(char **argv, t_data *a);
 
 //------------------	   ALGO	    ------------------//
 
@@ -113,6 +113,6 @@ void	rrotate_double(t_data **stack);
 
 //--------------------	   PRINT	 --------------------//
 
-void	ft_print_data(t_data **a);
+void	ft_print_data(t_data *a);
 
 #endif

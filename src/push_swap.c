@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 18:55:24 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/18 19:45:36 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,11 @@ int	main(int argc, char **argv)
 	t_data	*a;
 	t_data	*b;
 
-	a = ft_init_stack(argc, argv);
+	a = NULL;
 	b = NULL;
+	if (argc < 2)
+		return (-1);
+	a = ft_init_stack(argv, a);
 	if (is_sorted(a))
 		return (ft_free_stack(&a), 0);
 	if (ft_lstsize(a) >= 2 && ft_lstsize(a) <= 5)

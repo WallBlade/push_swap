@@ -5,110 +5,81 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 12:55:45 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/12 15:01:31 by zel-kass         ###   ########.fr       */
+/*   Created: 2022/08/01 13:00:01 by zel-kass          #+#    #+#             */
+/*   Updated: 2022/08/18 19:00:30 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	find_lis(t_data *a)
+int	is_sorted(t_data *a)
 {
-	t_data	*tmp;
-	t_data	*tmp2;
-	int		save;
-	int		i;
-
-	tmp = a;
-	while (tmp)
+	while (a->next)
 	{
-		i = 0;
-		save = tmp->num;
-		tmp2 = tmp;
-		while (i < ft_lstsize(a))
-		{
-			if (save < tmp2->num)
-			{
-				tmp->lis++;
-				save = tmp2->num;
-			}
-			tmp2 = tmp2->next;
-			if (tmp2 == NULL)
-				tmp2 = a;
-			i++;
-		}
-		tmp = tmp->next;
-	}
-}
-
-t_data	*lis_max(t_data *a)
-{
-	t_data	*max;
-
-	max = a;
-	while (a)
-	{
-		if (a->lis > max->lis)
-			max = a;
+		if (a->index > a->next->index)
+			return (0);
 		a = a->next;
 	}
-	return (max);
+	return (1);
 }
 
-void	mark_lis(t_data *a)
+int	ft_strcmp(char *s1, char *s2)
 {
-	t_data	*tmp;
-	int		comp;
-	int		i;
+	int	i;
 
 	i = 0;
-	tmp = lis_max(a);
-	tmp->is_lis = 1;
-	comp = tmp->num;
-	while (i < ft_lstsize(a))
+	while (s1[i] || s2[i])
 	{
-		if (comp < tmp->num)
-		{
-			tmp->is_lis = 1;
-			comp = tmp->num;
-		}
-		tmp = tmp->next;
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
-		if (tmp == NULL)
-			tmp = a;
+	}
+	return (0);
+}
+
+void	ft_print_error(t_data **stack)
+{
+	if (stack)
+		ft_free_stack(stack);
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
 	}
 }
 
-void	do_op(t_data **a, t_data *tmp)
+long	ft_atol(t_data **a, char *str)
 {
-	while (tmp->cost > 0)
-	{
-		rotate(a, 'a');
-		tmp->cost--;
-	}
-	while (tmp->cost < 0)
-	{
-		rrotate(a, 'a');
-		tmp->cost++;
-	}
-}
+	int		i;
+	long	res;
+	int		sign;
 
-void	push_nolis(t_data **a, t_data **b)
-{
-	t_data	*tmp;
-
-	tmp = *a;
-	while (tmp)
+	i = 0;
+	sign = 1;
+	res = 0;
+	while ((str[i] > 9 && str[i] < 13) || (str[i] == ' '))
+		i++;
+	while (str[i] == '+' || str[i] == '-')
 	{
-		if (tmp->is_lis == 0)
-		{
-			get_pos(*a);
-			set_cost(*a);
-			do_op(a, tmp);
-			push_b(a, b);
-			tmp = *a;
-		}
-		else
-			tmp = tmp->next;
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
 	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + (str[i] - 48);
+		if (res * sign < -2147483648 || res * sign > 2147483647)
+			ft_print_error(a);
+		i++;
+	}
+	return (res * sign);
 }

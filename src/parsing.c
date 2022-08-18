@@ -6,93 +6,42 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:45:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 16:58:43 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/18 19:05:52 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	ft_check_doubles(char **args, int i)
+int	ft_treat_args(char **argv, int i)
 {
-	int	j;
-
-	while (args[i])
+	while (argv[i])
 	{
-		j = i + 1;
-		while (args[j])
-		{
-			if (ft_strcmp(args[i], args[j]) == 0)
-				return (0);
-			j++;
-		}
+		if (!ft_isdigit(argv[i]))
+			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	ft_treat_args(char **args, int i)
+void	ft_get_args(char **argv, t_data **a)
 {
-	if (!ft_check_doubles(args, i))
-		return (0);
-	while (args[i])
-	{
-		while (args[i])
-		{
-			if (!ft_isdigit(args[i]))
-				return (0);
-			i++;
-		}
-	}
-	return (1);
-}
-
-t_data	*ft_get_args(int argc, char **params, int i, t_data *a)
-{
-	if (ft_treat_args(params, i) == 1)
-	{
-		while (params[i])
-			ft_lstadd_back(&a, ft_lstnew(ft_atoi(params[i++])));
-	}
-	else
-	{
-		if (argc == 2)
-			ft_freetab(params, ft_countwords(params[1], ' '));
-		ft_print_error();
-	}
-	return (a);
-}
-
-t_data	*ft_catch_errors(int argc, char **params)
-{
-	int		i;
-	t_data	*a;
+	int	i;
 
 	i = 1;
-	a = NULL;
-	if ((argc == 2 && ft_countwords(params[1], ' ') < 2) || (argc < 2))
+	if (ft_treat_args(argv, i) == 1)
 	{
-		if (!ft_isdigit(params[1]))
-			ft_print_error();
-		exit (EXIT_FAILURE);
+		while (argv[i])
+			ft_lstadd_back(a, ft_lstnew(ft_atol(a, argv[i++])));
 	}
-	if (argc == 2)
-	{
-		params = ft_split(params[1], ' ');
-		i = 0;
-	}
-	a = ft_get_args(argc, params, i, a);
-	if (argc == 2)
-		ft_freetab(params, ft_countwords(params[1], ' '));
-	return (a);
+	else
+		ft_print_error(a);
 }
 
-t_data	*ft_init_stack(int argc, char **argv)
+t_data	*ft_init_stack(char **argv, t_data *a)
 {
-	t_data	*a;
-	char	**params;
-
-	params = argv;
-	a = ft_catch_errors(argc, params);
+	ft_get_args(argv, &a);
+	if (!check_atol(a))
+		ft_print_error(&a);
 	get_pos(a);
 	index_stack(a);
 	if (ft_lstsize(a) > 5)
