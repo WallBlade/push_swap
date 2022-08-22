@@ -6,7 +6,7 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/18 19:03:02 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/22 21:43:50 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,21 @@ typedef struct s_data
 	int				num;
 	int				index;
 	int				pos;
-	int				lis;
-	int				is_lis;
 	int				cost;
 	int				abs;
-	int				total;
 	struct s_data	*next;
 }				t_data;
 
-//------------------	  LIS	   ------------------//
+//------------------	 MEDIAN   ------------------//
 
-void	find_lis(t_data *a);
-t_data	*lis_max(t_data *a);
-void	mark_lis(t_data *a);
-void	do_op(t_data **a, t_data *tmp);
-void	push_nolis(t_data **a, t_data **b);
+int		find_median(t_data *a);
+int		only_little_values(t_data *a, int chunk);
+void	pre_sort(t_data **a, t_data **b);
 
 //------------------	 COST	  ------------------//
 
 void	set_cost(t_data *stack);
-t_data	*get_min_costa(t_data *a, t_data *b);
+t_data	*get_target(t_data *a, t_data *b);
 int		decide_cost(int cost_a, int cost_b);
 void	absolute_cost(t_data *a, t_data *b);
 t_data	*search_best_cost(t_data *b);
@@ -67,8 +62,8 @@ void	ft_free_stack(t_data **stack);
 
 void	rr(t_data **a, t_data **b);
 void	rrr(t_data **a, t_data **b);
+void	do_op(t_data **a, t_data *tmp);
 void	finish_him(t_data **a);
-int		ft_isdigit(char *str);
 int		check_atol(t_data *a);
 
 //------------------	 LISTS	  ------------------//
@@ -85,6 +80,7 @@ int		ft_countwords(char *str, char c);
 int		ft_wordlen(char *str, char c, int i);
 char	**ft_freetab(char **s, int n);
 char	**ft_split(char *str, char c);
+int		ft_isdigit(char *str);
 
 //-------------------	 PARSING	 -------------------//
 
@@ -110,9 +106,5 @@ void	rotate(t_data **stack, char c);
 void	rrotate(t_data **stack, char c);
 void	rotate_double(t_data **stack);
 void	rrotate_double(t_data **stack);
-
-//--------------------	   PRINT	 --------------------//
-
-void	ft_print_data(t_data *a);
 
 #endif

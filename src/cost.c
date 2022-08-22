@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_2.c                                          :+:      :+:    :+:   */
+/*   cost.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:57:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 00:33:44 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/22 21:03:41 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	set_cost(t_data *stack)
 {
@@ -27,23 +27,23 @@ void	set_cost(t_data *stack)
 	}
 }
 
-t_data	*get_min_costa(t_data *a, t_data *b)
+t_data	*get_target(t_data *a, t_data *b)
 {
 	if (a->index > b->index && ft_lstlast(a)->index < b->index)
 		return (a);
+	else if (b->index < stack_min(a)->index)
+		return (stack_min(a));
+	else if (b->index > stack_max(a)->index)
+	{
+		if (stack_max(a)->next)
+			return (stack_max(a)->next);
+		return (a);
+	}
 	while (a)
 	{
 		if ((a && a->next) && a->index < b->index
 			&& a->next->index > b->index)
 			return (a->next);
-		else if (b->index < stack_min(a)->index)
-			return (stack_min(a));
-		else if (b->index > stack_max(a)->index)
-		{
-			if (stack_max(a)->next)
-				return (stack_max(a)->next);
-			return (a);
-		}
 		a = a->next;
 	}
 	return (NULL);
@@ -78,12 +78,12 @@ int	decide_cost(int cost_a, int cost_b)
 
 void	absolute_cost(t_data *a, t_data *b)
 {
-	t_data	*insert;
+	t_data	*target;
 
 	while (b)
 	{
-		insert = get_min_costa(a, b);
-		b->abs = decide_cost(insert->cost, b->cost);
+		target = get_target(a, b);
+		b->abs = decide_cost(target->cost, b->cost);
 		b = b->next;
 	}
 }

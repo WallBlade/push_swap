@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:02:47 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 00:05:47 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/21 19:28:25 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	swap(t_data **stack, char c)
 {

@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 19:11:00 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/15 00:33:12 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/21 19:27:58 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	do_rotate(t_data **stack, int *cost, char c)
 {

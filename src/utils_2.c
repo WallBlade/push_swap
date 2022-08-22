@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:02:05 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/18 19:38:03 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/21 19:27:18 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 t_data	*stack_max(t_data *a)
 {

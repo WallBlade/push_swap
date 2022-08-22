@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:47:48 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/11 16:53:44 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:47:41 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	ft_countwords(char *str, char c)
 {
@@ -84,4 +84,20 @@ char	**ft_split(char *str, char c)
 	}
 	split[j] = 0;
 	return (split);
+}
+
+int	ft_isdigit(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '-')
+			i++;
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
+		i++;
+	}
+	return (1);
 }

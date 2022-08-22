@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 23:33:38 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/18 19:11:19 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:47:34 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	rr(t_data **a, t_data **b)
 {
@@ -26,6 +26,20 @@ void	rrr(t_data **a, t_data **b)
 	ft_putstr("rrr\n");
 }
 
+void	do_op(t_data **a, t_data *tmp)
+{
+	while (tmp->cost > 0)
+	{
+		rotate(a, 'a');
+		tmp->cost--;
+	}
+	while (tmp->cost < 0)
+	{
+		rrotate(a, 'a');
+		tmp->cost++;
+	}
+}
+
 void	finish_him(t_data **a)
 {
 	t_data	*min;
@@ -34,22 +48,6 @@ void	finish_him(t_data **a)
 	get_pos(*a);
 	set_cost(*a);
 	do_op(a, min);
-}
-
-int	ft_isdigit(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '-')
-			i++;
-		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 int	check_atol(t_data *a)

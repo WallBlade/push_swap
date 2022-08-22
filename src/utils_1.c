@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 13:00:01 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/18 19:00:30 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/21 19:28:45 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	is_sorted(t_data *a)
 {

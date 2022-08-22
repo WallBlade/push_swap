@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:41:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/18 18:35:03 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:42:48 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 t_data	*ft_lstnew(int nb)
 {
@@ -22,9 +22,8 @@ t_data	*ft_lstnew(int nb)
 	stack->num = nb;
 	stack->index = 0;
 	stack->pos = 0;
-	stack->lis = 0;
-	stack->is_lis = 0;
 	stack->cost = 0;
+	stack->abs = 0;
 	stack->next = NULL;
 	return (stack);
 }

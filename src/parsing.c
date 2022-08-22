@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:45:14 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/18 19:05:52 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:41:21 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	ft_treat_args(char **argv, int i)
 {
@@ -44,10 +44,5 @@ t_data	*ft_init_stack(char **argv, t_data *a)
 		ft_print_error(&a);
 	get_pos(a);
 	index_stack(a);
-	if (ft_lstsize(a) > 5)
-	{
-		find_lis(a);
-		mark_lis(a);
-	}
 	return (a);
 }

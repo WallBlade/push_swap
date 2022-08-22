@@ -6,11 +6,11 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 12:24:43 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/18 19:45:36 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/22 21:30:40 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	sort_three(t_data **a)
 {
@@ -67,7 +67,7 @@ void	sort_big_stack(t_data **a, t_data **b)
 		set_cost(*b);
 		absolute_cost(*a, *b);
 		cheap = search_best_cost(*b);
-		insert = get_min_costa(*a, cheap);
+		insert = get_target(*a, cheap);
 		exec(a, b, insert->cost, cheap->cost);
 		push_a(a, b);
 	}
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 		sort_five(&a, &b);
 		return (ft_free_stack(&a), 0);
 	}
-	push_nolis(&a, &b);
+	pre_sort(&a, &b);
 	sort_big_stack(&a, &b);
 	finish_him(&a);
 	ft_free_stack(&a);
