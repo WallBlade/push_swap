@@ -6,17 +6,15 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 16:07:12 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/22 21:43:50 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/23 12:19:27 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stddef.h>
 
 typedef struct s_data
 {
@@ -30,6 +28,7 @@ typedef struct s_data
 
 //------------------	 MEDIAN   ------------------//
 
+int		ft_isdigit(char *str);
 int		find_median(t_data *a);
 int		only_little_values(t_data *a, int chunk);
 void	pre_sort(t_data **a, t_data **b);
@@ -73,14 +72,6 @@ void	ft_lstadd_back(t_data **lst, t_data *new);
 void	ft_lstadd_front(t_data **lst, t_data *new);
 int		ft_lstsize(t_data *lst);
 t_data	*ft_lstlast(t_data *a);
-
-//-------------------	 SPLIT	 -------------------//
-
-int		ft_countwords(char *str, char c);
-int		ft_wordlen(char *str, char c, int i);
-char	**ft_freetab(char **s, int n);
-char	**ft_split(char *str, char c);
-int		ft_isdigit(char *str);
 
 //-------------------	 PARSING	 -------------------//
 

@@ -6,11 +6,27 @@
 /*   By: zel-kass <zel-kass@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 19:22:40 by zel-kass          #+#    #+#             */
-/*   Updated: 2022/08/22 21:43:42 by zel-kass         ###   ########.fr       */
+/*   Updated: 2022/08/23 12:09:07 by zel-kass         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_isdigit(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '-')
+			i++;
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	find_median(t_data *a)
 {
